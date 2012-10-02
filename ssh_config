@@ -1,0 +1,18 @@
+#ControlMaster auto
+#ControlPath ~/.ssh_local/socket-%r@%h:%p
+
+host linode
+    host newark472.linode.com
+    user linode237389
+
+Host home
+  Hostname yoda.randomcomp.net
+
+Host log1.noc.drexel.edu
+  User ccr27
+
+Host 129.25.64.75
+    ConnectTimeout 100
+
+host savi
+    hostname savi.ducomputingacademy.org

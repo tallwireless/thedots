@@ -1,0 +1,64 @@
+! Xterm
+XTerm*background:       Black
+XTerm*foreground:       Green
+XTerm*bellSuppressTime: 250
+XTerm*boldColors:       true
+XTerm*boldMode:         false
+XTerm*cacheDoublesize:  4
+XTerm*eightBitInput:    false
+XTerm*metaSendsEscape:  true
+XTerm*utf8:             1
+XTerm*saveLines:        5000
+XTerm*trimSelection:    true
+XTerm*underLine:        true
+XTerm*jumpScroll:       true
+XTerm*scrollBar:        false
+XTerm*scrollBar_right:  true
+XTerm*dynamicColors:    true
+XTerm*bellIsUrgent:     true
+XTerm*scrollKey:        true
+XTerm*scrollTtyOutput:  false
+
+! Urxvt
+URxvt*background:       Black
+URxvt*foreground:       White
+URxvt*italicFont:
+URxvt*boldItalicFont:
+
+URxvt*jumpScroll: true
+URxvt*urgentOnBell: true
+URxvt*scrollBar: false
+URxvt*scrollBar_right:  true
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: false
+URxvt*scrollTtyKeypress: true
+
+URxvt.perl-ext-common : default,matcher
+URxvt.urlLauncher     : /usr/bin/chromium-bin
+URxvt.matcher.button  : 1 
+
+! black
+URxvt.color0  : #202020
+URxvt.color8  : #202020
+! red
+URxvt.color1  : #bb4444
+URxvt.color9  : #bb4444
+! green
+URxvt.color2  : #44bb44
+URxvt.color10 : #44bb44
+! yellow
+URxvt.color3  : #bbbb44
+URxvt.color11 : #bbbb44
+! blue
+URxvt.color4  : #4444aa
+URxvt.color12 : #4444aa
+! magenta
+URxvt.color5  : #bb44bb
+URxvt.color13 : #bb44bb
+! cyan
+URxvt.color6  : #44bbbb
+URxvt.color14 : #44bbbb
+! white
+URxvt.color7  : #999999
+URxvt.color15 : #999999
+
