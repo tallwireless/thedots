@@ -1,6 +1,7 @@
 #ControlMaster auto
 #ControlPath ~/.ssh_local/socket-%r@%h:%p
 
+
 host linode
     host newark472.linode.com
     user linode237389
