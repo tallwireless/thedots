@@ -33,7 +33,7 @@ stty -ixon &>/dev/null
 # variables when the shell starts.  However, all of the other options can be
 # changed while the shell is running to change its behavior from that point
 # forward.
-if [ ! -z ~/.zsh_sunos ]; then
+if [ -z ~/.zsh_sunos ]; then
     typeset -A shellopts
     shellopts[utf8]=1         # Set up a few programs for UTF-8 mode
     shellopts[titlebar]=1     # Whether the titlebar can be dynamically changed
