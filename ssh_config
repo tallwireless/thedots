@@ -17,3 +17,60 @@ Host 129.25.64.75
 
 host savi
     hostname savi.ducomputingacademy.org
+
+host nic1 master 
+    Hostname 128.91.243.89
+    User admin
+
+host vag1
+    Hostname 128.91.243.94
+    User admin
+
+host vag2
+    Hostname 128.91.11.171
+    User admin
+
+host vag3
+    Hostname 128.91.11.172
+    User admin
+
+host modv1
+    Hostname 128.91.243.85
+    User admin
+
+host modv2
+    Hostname 128.91.11.187
+    User admin
+
+host modv3
+    Hostname 128.91.242.10
+    User admin
+
+host levy1
+    Hostname 128.91.243.98
+    User admin
+
+host levy2
+    Hostname 128.91.242.70
+    User admin
+
+host levy3
+    Hostname 128.91.242.150
+    User admin
+
+host hnt1
+    Hostname 128.91.243.205
+    User admin
+
+host hnt2
+    Hostname 128.91.242.38
+    User admin
+
+host hnt3
+    Hostname 128.91.243.54
+    User admin
+
+host lab1
+    Hostname 128.91.243.54
+    User admin
+
