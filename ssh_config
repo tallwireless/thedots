@@ -71,6 +71,6 @@ host hnt3
     User admin
 
 host lab1
-    Hostname 128.91.243.54
+    Hostname 128.91.243.66
     User admin
 
