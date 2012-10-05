@@ -74,3 +74,9 @@ host lab1
     Hostname 128.91.243.66
     User admin
 
+host netview
+    Hostname netview.net.isc.upenn.edu
+
+host *.router.upenn.edu 192.84.2.*
+    ProxyCommand ssh -q netview /home/charlesr/usr/local/bin/netcat %h 22
+
