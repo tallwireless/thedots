@@ -1,0 +1,4 @@
+alias ls="ls -G"
+alias reload="exec zsh -l"
+alias prolist="vim ~/Box\ Documents/Wireless\ documents/CharlesProjectList.txt"
+

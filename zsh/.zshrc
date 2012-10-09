@@ -193,6 +193,9 @@ alias -g H='|head'
 alias -g V='|vim -'
 alias -g B='&>/dev/null &'
 alias -g D='&>/dev/null &|'
+alias ki="kinit charlesr@UPENN.EDU"
+alias kl="klist -f"
+alias kd="kdestroy"
 
 if [ -f ~/.zsh_local_aliases ]; then
     source ~/.zsh_local_aliases
