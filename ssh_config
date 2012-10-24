@@ -1,6 +1,8 @@
 #ControlMaster auto
 #ControlPath ~/.ssh_local/socket-%r@%h:%p
 
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials yes
 
 host linode
     host newark472.linode.com
@@ -70,8 +72,16 @@ host hnt3
     Hostname 128.91.243.54
     User admin
 
-host lab1
+host lab-m3
     Hostname 128.91.243.66
+    User admin
+
+host lab-3600
+    hostname 128.91.241.2
+    User admin
+
+host lab-7200
+    hostname 128.91.240.90
     User admin
 
 host netview

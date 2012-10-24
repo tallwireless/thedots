@@ -152,3 +152,6 @@ augroup END
 color default
  
 set mouse-=a
+
+set modeline
+set modelines=2

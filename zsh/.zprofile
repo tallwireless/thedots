@@ -30,8 +30,8 @@ if [ -d ~/bin ]; then
   INFOPATH=~/info:$INFOPATH
 fi
 
-if [ -d /opt/bin ]; then
-  PATH=$PATH:/opt/bin
-  MANPATH=$MANPATH:/opt/man
-  INFOPATH=$INFOPATH:/opt/info
+if [ -d /opt/local/bin ]; then
+  PATH=$PATH:/opt/local/bin:/opt/local/sbin
+  MANPATH=$MANPATH:/opt/local/man
+  INFOPATH=$INFOPATH:/opt/local/info
 fi
