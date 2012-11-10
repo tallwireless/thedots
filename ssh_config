@@ -90,3 +90,14 @@ host netview
 host *.router.upenn.edu 192.84.2.*
     ProxyCommand ssh -q netview /home/charlesr/usr/local/bin/netcat %h 22
 
+host es 
+    hostname EISENSCHWEIN.router.upenn.edu
+    ProxyCommand ssh -q netview /home/charlesr/usr/local/bin/netcat %h 22
+
+host dynes-magpi
+    hostname dynes-sw.magpi.net
+    user admin
+
+host dynes-vag
+    hostname dynes-sw.dynes.upenn.edu
+    user admin
