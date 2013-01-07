@@ -8,18 +8,6 @@ host linode
     host newark472.linode.com
     user linode237389
 
-Host home
-  Hostname yoda.randomcomp.net
-
-Host log1.noc.drexel.edu
-  User ccr27
-
-Host 129.25.64.75
-    ConnectTimeout 100
-
-host savi
-    hostname savi.ducomputingacademy.org
-
 host nic1 master 
     Hostname 128.91.243.89
     User admin
@@ -101,3 +89,7 @@ host dynes-magpi
 host dynes-vag
     hostname dynes-sw.dynes.upenn.edu
     user admin
+
+host home
+    hostname home.randomcomp.net
+    port 22222
