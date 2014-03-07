@@ -4,3 +4,4 @@
 .xmodmaprc
 .zsh_local
 ssh_config .ssh/config
+.screenrc
