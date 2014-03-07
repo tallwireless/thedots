@@ -1,0 +1,5 @@
+bind ' ' windowlist -b  
+
+caption always "%{= kC}%H%{= .G}%=%S:%t%=%{= .M}%0c:%s"
+
+escape ^gg
