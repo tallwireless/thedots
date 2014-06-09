@@ -8,75 +8,11 @@ host linode
     host newark472.linode.com
     user linode237389
 
-host nic1 master 
-    Hostname 128.91.243.89
-    User admin
-
-host vag1
-    Hostname 128.91.243.94
-    User admin
-
-host vag2
-    Hostname 128.91.11.171
-    User admin
-
-host vag3
-    Hostname 128.91.11.172
-    User admin
-
-host modv1
-    Hostname 128.91.243.85
-    User admin
-
-host modv2
-    Hostname 128.91.11.187
-    User admin
-
-host modv3
-    Hostname 128.91.242.10
-    User admin
-
-host levy1
-    Hostname 128.91.243.98
-    User admin
-
-host levy2
-    Hostname 128.91.242.70
-    User admin
-
-host levy3
-    Hostname 128.91.242.150
-    User admin
-
-host hnt1
-    Hostname 128.91.243.205
-    User admin
-
-host hnt2
-    Hostname 128.91.242.38
-    User admin
-
-host hnt3
-    Hostname 128.91.243.54
-    User admin
-
-host lab-m3
-    Hostname 128.91.243.66
-    User admin
-
-host lab-3600
-    hostname 128.91.241.2
-    User admin
-
-host lab-7200
-    hostname 128.91.240.90
-    User admin
-
 host netview
     Hostname netview.net.isc.upenn.edu
 
-host *.router.upenn.edu 192.84.2.*
-    ProxyCommand ssh -q netview /home/charlesr/usr/local/bin/netcat %h 22
+#host *.router.upenn.edu 192.84.2.*
+    #ProxyCommand ssh -q netview /home/charlesr/usr/local/bin/netcat %h 22
 
 host es 
     hostname EISENSCHWEIN.router.upenn.edu

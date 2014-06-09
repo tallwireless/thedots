@@ -3,4 +3,5 @@
 .vimrc
 .xmodmaprc
 .zsh_local
+.screenrc
 ssh_config .ssh/config
