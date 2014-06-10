@@ -10,7 +10,7 @@ host linode
     host newark472.linode.com
     user linode237389
 
-host master nic1
+host nic1 master
     host 128.91.243.89
 
 

@@ -1,6 +1,6 @@
 bind ' ' windowlist -b  
 
-caption always "%{= kC}%H%{= .G}%=%S:%t%=%{= .M}%0c:%s"
+caption always "%{= kC}%H%{= .G}%=%-w%{.Bb}%n %t%{-}%{.G}%+w %=%{= .M}%0c:%s"
 
 logfile tmp/%t-%Y%m%d-%c.log
 
