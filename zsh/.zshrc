@@ -197,7 +197,10 @@ alias ki="kinit charlesr@UPENN.EDU"
 alias kl="klist -f"
 alias kd="kdestroy"
 alias jump='ssh -t trampoline screen -Ux remote'
-alias devjump='ssh -t trampoline screen -Ux dev'
+alias dev='ssh -t trampoline screen -Ux dev'
+alias wifi='ssh -t trampoline screen -Ux wifi'
+alias routers='ssh -t trampoline screen -Ux routers'
+alias wireless='ssh -t wireless screen -Ux remote'
 
 if [ -f ~/.zsh_local_aliases ]; then
     source ~/.zsh_local_aliases
