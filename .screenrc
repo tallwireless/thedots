@@ -2,6 +2,6 @@ bind ' ' windowlist -b
 
 caption always "%{= kC}%H%{= .G}%=%S:%t%=%{= .M}%0c:%s"
 
-logfile ~/tmp/%t-%Y%m%d-%C.log
+logfile tmp/%t-%Y%m%d-%c.log
 
 escape ^gg

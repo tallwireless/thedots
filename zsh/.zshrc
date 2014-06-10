@@ -196,6 +196,8 @@ alias -g D='&>/dev/null &|'
 alias ki="kinit charlesr@UPENN.EDU"
 alias kl="klist -f"
 alias kd="kdestroy"
+alias jump='ssh -t trampoline screen -Ux remote'
+alias devjump='ssh -t trampoline screen -Ux dev'
 
 if [ -f ~/.zsh_local_aliases ]; then
     source ~/.zsh_local_aliases
