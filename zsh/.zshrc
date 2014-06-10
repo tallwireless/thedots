@@ -196,11 +196,11 @@ alias -g D='&>/dev/null &|'
 alias ki="kinit charlesr@UPENN.EDU"
 alias kl="klist -f"
 alias kd="kdestroy"
-alias jump='ssh -t trampoline screen -Ux remote'
-alias dev='ssh -t trampoline screen -Ux dev'
-alias wifi='ssh -t trampoline screen -Ux wifi'
-alias routers='ssh -t trampoline screen -Ux routers'
-alias wireless='ssh -t wireless screen -Ux remote'
+alias jump='ssh -t trampoline tmux attach -t remote'
+alias dev='ssh -t trampoline tmux attach -t dev'
+alias wifi='ssh -t trampoline tmux attach -t wifi'
+alias routers='ssh -t trampoline tmux attach -t routers'
+alias wireless='ssh -t wireless tmux attach -t remote'
 
 if [ -f ~/.zsh_local_aliases ]; then
     source ~/.zsh_local_aliases
