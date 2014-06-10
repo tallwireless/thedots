@@ -37,7 +37,7 @@ if [ ! -z ~/.zsh_sunos ]; then
     typeset -A shellopts
     shellopts[utf8]=1         # Set up a few programs for UTF-8 mode
     shellopts[titlebar]=1     # Whether the titlebar can be dynamically changed
-    shellopts[screen_names]=1 # Dynamically change window names in GNU screen
+    shellopts[screen_names]=0 # Dynamically change window names in GNU screen
     shellopts[preexec]=1      # Run preexec to update screen title and titlebar
     shellopts[precmd]=1       # Run precmd to show job count and retval in RPROMPT
     #shellopts[rprompt]=1      # Show the right-side time, retval, job count prompt.A
