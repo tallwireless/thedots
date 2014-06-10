@@ -10,15 +10,6 @@ host linode
     host newark472.linode.com
     user linode237389
 
-host wireless
-    Hostname wireless.dccs.upenn.edu
-
-host *.router.upenn.edu 192.84.2.* *.dccs.upenn.edu
-    ProxyCommand ssh -q wireless /bin/netcat %h 22
-
-host phl-09.magpi.net
-    ProxyCommand ssh -q wireless /bin/netcat %h 22
-
 host es 
     hostname EISENSCHWEIN.router.upenn.edu
     ProxyCommand ssh -q wireless /bin/netcat %h 22
