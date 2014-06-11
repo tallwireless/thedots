@@ -196,11 +196,11 @@ alias -g D='&>/dev/null &|'
 alias ki="kinit charlesr@UPENN.EDU"
 alias kl="klist -f"
 alias kd="kdestroy"
-alias jump='ssh trampoline -t tmux new -t remote -s remote-clone`mktemp XXX`'
-alias dev='ssh trampoline -t tmux new -t dev -s dev-clone`mktemp XXX`'
-alias wifi='ssh trampoline -t tmux new -t wifi -s wifi-clone`mktemp XXX`'
-alias routers='ssh trampoline -t tmux new -t routers -s routers-clone`mktemp XXX`'
-alias wireless='ssh wireless -t tmux new -t remote -s remote-clone`mktemp XXX`'
+alias jump='ssh trampoline -t tmux new -t remote -s remote-clone`mktemp -u XXX`'
+alias dev='ssh trampoline -t tmux new -t dev -s dev-clone`mktemp -u XXX`'
+alias wifi='ssh trampoline -t tmux new -t wifi -s wifi-clone`mktemp -u XXX`'
+alias routers='ssh trampoline -t tmux new -t routers -s routers-clone`mktemp -u XXX`'
+alias wireless='ssh wireless -t tmux new -t remote -s remote-clone`mktemp -u XXX`'
 
 if [ -f ~/.zsh_local_aliases ]; then
     source ~/.zsh_local_aliases
