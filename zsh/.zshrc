@@ -198,6 +198,7 @@ alias kl="klist -f"
 alias kd="kdestroy"
 alias jump='ssh trampoline -t tmux new -t remote -s remote-clone`mktemp -u XXX`'
 alias dev='ssh trampoline -t tmux new -t dev -s dev-clone`mktemp -u XXX`'
+alias lab='ssh trampoline -t tmux new -t lab -s lab-clone`mktemp -u XXX`'
 alias wifi='ssh trampoline -t tmux new -t wifi -s wifi-clone`mktemp -u XXX`'
 alias routers='ssh trampoline -t tmux new -t routers -s routers-clone`mktemp -u XXX`'
 alias drahtlos='ssh drahtlos.dccs.upenn.edu -t tmux new -t remote -s remote-clone`mktemp -u XXX`'
