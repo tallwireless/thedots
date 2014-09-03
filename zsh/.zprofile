@@ -3,7 +3,7 @@
 ### Path
 #### Superuser Paths
 # A list of hostnames that you expect to grant you sudo.
-HOSTS_WITH_SUDO=( velke yellowbrick drahtlos wireless)
+HOSTS_WITH_SUDO=( velke YellowBrick drahtlos wireless)
 
 # Add superuser paths to PATH on machines where we have sudo
 for host in $HOSTS_WITH_SUDO; do
