@@ -5,6 +5,9 @@ ServerAliveInterval 60
 
     GSSAPIAuthentication yes
     GSSAPIDelegateCredentials yes
+host trampoline* config* *.net.isc.upenn.edu
+    ControlMaster auto
+    ControlPath ~/.ssh/cm_socket/%r@%h:%p
 
 host linode
     host newark472.linode.com

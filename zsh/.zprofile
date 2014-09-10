@@ -3,11 +3,12 @@
 ### Path
 #### Superuser Paths
 # A list of hostnames that you expect to grant you sudo.
-HOSTS_WITH_SUDO=( macht savi euler wash liivuk )
+HOSTS_WITH_SUDO=( velke YellowBrick drahtlos wireless)
 
 # Add superuser paths to PATH on machines where we have sudo
 for host in $HOSTS_WITH_SUDO; do
   if [[ "$host" == "${HOST%%.*}" ]]; then
+    echo "You have SUDO on this host."
     path=($path /usr/sbin /sbin /usr/local/sbin)
     break
   fi

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ips=`/sbin/ip addr | grep "inet "  | sed 's/\// /g' | awk '{print $2" fern-"$NF}' | grep -v lo`
+
+
+echo $ips | ssh drahtlos.randomcomp.net 'cat > tmp/remote'
