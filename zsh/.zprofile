@@ -24,7 +24,7 @@ if [ -f ~/.zprofile_local ]; then
     source ~/.zprofile_local
     PATH=$LOCALPATH:$PATH
 fi
-PATH=/usr/local/bin:$PATH
+PATH=/home/charlesr/local/bin:/usr/local/bin:$PATH
 if [ -d ~/bin ]; then
   PATH=~/bin:$PATH
   MANPATH=~/man:$MANPATH
