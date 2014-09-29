@@ -6,3 +6,5 @@
 ssh_config .ssh/config
 .screenrc
 .tmux.conf
+bin
+local
