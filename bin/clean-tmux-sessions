@@ -1,5 +1,5 @@
 #!/bin/bash
 
 for i in $(tmux ls | grep clone | grep -v attached | cut -f1 -d:); do 
-    /home/charlesr/local/bin/tmux kill-session -t $i; 
+    tmux kill-session -t $i; 
 done
