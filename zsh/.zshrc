@@ -196,14 +196,15 @@ alias -g D='&>/dev/null &|'
 alias ki="kinit charlesr@UPENN.EDU"
 alias kl="klist -f"
 alias kd="kdestroy"
-alias dev='ssh trampoline -t /home/charlesr/local/bin/tmux new -t dev -s dev-clone`mktemp -u XXX`'
-alias drahtlos='ssh drahtlos.dccs.upenn.edu -t /home/charlesr/local/bin/tmux new -t remote -s remote-clone`mktemp -u XXX`'
-alias home='ssh -p 22222 home.randomcomp.net -t /home/charlesr/local/bin/tmux new -t remote -s remote-clone`mktemp -u XXX`'
-alias jump='ssh trampoline -t /home/charlesr/local/bin/tmux new -t remote -s remote-clone`mktemp -u XXX`'
-alias lab='ssh trampoline -t /home/charlesr/local/bin/tmux new -t lab -s lab-clone`mktemp -u XXX`'
-alias routers='ssh trampoline -t /home/charlesr/local/bin/tmux new -t routers -s routers-clone`mktemp -u XXX`'
-alias wifi='ssh trampoline -t /home/charlesr/local/bin/tmux new -t wifi -s wifi-clone`mktemp -u XXX`'
-alias wireless='ssh wireless -t /home/charlesr/local/bin/tmux new -t remote -s remote-clone`mktemp -u XXX`'
+alias dev='ssh trampoline -t tmux new -t dev -s dev-clone`mktemp -u XXX`'
+alias drahtlos='ssh drahtlos.dccs.upenn.edu -t tmux new -t remote -s remote-clone`mktemp -u XXX`'
+alias home='ssh -p 22222 home.randomcomp.net -t tmux new -t remote -s remote-clone`mktemp -u XXX`'
+alias jump='ssh trampoline -t tmux new -t remote -s remote-clone`mktemp -u XXX`'
+alias lab='ssh trampoline -t tmux new -t lab -s lab-clone`mktemp -u XXX`'
+alias routers='ssh trampoline -t tmux new -t routers -s routers-clone`mktemp -u XXX`'
+alias wifi='ssh trampoline -t tmux new -t wifi -s wifi-clone`mktemp -u XXX`'
+alias wireless='ssh wireless -t tmux new -t remote -s remote-clone`mktemp -u XXX`'
+alias servers='ssh trampoline -t tmux new -t servers -s servers-clone`mktemp -u XXX`'
 
 if [ -f ~/.zsh_local_aliases ]; then
     source ~/.zsh_local_aliases
