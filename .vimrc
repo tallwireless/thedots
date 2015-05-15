@@ -149,7 +149,7 @@ augroup mail
   au! BufRead,BufNewFile *.mail   setfiletype mail
 augroup END
 
-color default
+color darkblue
  
 set mouse-=a
 
