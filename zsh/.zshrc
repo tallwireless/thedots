@@ -141,7 +141,7 @@ if booleancheck "$shellopts[screen_names]" ; then
     set-screen-title "$psvar[2]"           # set the command as the screen title
 fi
 if booleancheck "$shellopts[titlebar]" ; then
-    if [[ -z $SSH_CLIENT || -z $TMUX ]] ; then
+    if [[ -z $SSH_CLIENT && -z $TMUX ]] ; then
         set-icon-title   "$psvar[2]"
     else
         set-icon-title   "${HOST%%.*}:$psvar[2]"
