@@ -1,3 +1,3 @@
 [submodule "tmux"]
-	path = modules/tmux
+	path = tmux
 	url = git@github.com:tmux/tmux.git
