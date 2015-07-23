@@ -129,27 +129,38 @@ fi
 # This function actually does the work for set-title-by-command, described
 # above.
 function set-title-by-cmd-impl {
+
 set "$1" "${2:-$PWD}"                      # Replace $2 with $PWD if blank
-psvar[1]=${(V)$(cd "$2"; print -Pn "%m> %~ || "; print "$1")} # The new title
+#echo "DEBUG: \$1 -> $1"
+#echo "DEBUG: \$2 -> $2"
+
+#psvar[1]=${(V)$(cd "$2"; print -Pn "%m> %~ || "; print "$1")} # The new title
+#echo "DEBUG: \$psvar[1] -> $psvar[1]"
+
 if [ ${1[(wi)^(*=*|sudo|-*)]} -ne 0 ]; then
-    psvar[2]=${1[(wr)^(*=*|sudo|-*)]}        # The one-word command to execute
+    psvar[2]="${1[(wr)^(*=*|sudo|ssh|-*)]}"        # The one-word command to execute
 else
-    psvar[2]=$1                              # The whole line if only one word
+    psvar[2]="$1"                              # The whole line if only one wordA
 fi                                         # or a variable assignment, etc
 
-if booleancheck "$shellopts[screen_names]" ; then
-    set-screen-title "$psvar[2]"           # set the command as the screen title
-fi
-if booleancheck "$shellopts[titlebar]" ; then
+if [ $TMUX ]; then 
+    #if booleancheck "$shellopts[screen_names]" ; then
+        set-screen-title   "$psvar[2]"
+        set-window-title "${HOST%%.*}:$psvar[2]"
+        #set-screen-title "SOMETHING:$psvar[2]"           # set the command as the screen title
+    #fi
+else
+#i booleancheck "$shellopts[titlebar]" ; then
     if [[ -z $SSH_CLIENT && -z $TMUX ]] ; then
-        set-icon-title   "$psvar[2]"
+        set-icon-title   "FOOBAR:$psvar[2]"
     else
         set-icon-title   "${HOST%%.*}:$psvar[2]"
     fi
-    set-window-title "$psvar[1]"
+    set-window-title "FOOBAR:$psvar[1]"
 fi
-export TITLE=$psvar[1]
-export ICON=$psvar[2]
+
+export TITLE="BAR:$psvar[1]"
+export ICON="FOO:$psvar[2]"
 }
 
 #### Capability checks
@@ -558,7 +569,10 @@ function precmd {
   shownexterr=0;
 
   if booleancheck "$shellopts[titlebar]" ; then
-    psvar[1]=$(print -Pn $'%m> %~')    # set titlebar to Hostname> FullPath
+      #if [ $TMUX ]; then
+          psvar[1]=$(print -Pn '%m:shell')
+      #fi
+     # psvar[1]=$(print -Pn $'%m> %~')    # set titlebar to Hostname> FullPath
     set-window-title "$psvar[1]"
   fi
 
