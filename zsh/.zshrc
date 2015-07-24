@@ -152,11 +152,10 @@ if [ $TMUX ]; then
 else
 #i booleancheck "$shellopts[titlebar]" ; then
     if [[ -z $SSH_CLIENT && -z $TMUX ]] ; then
-        set-icon-title   "FOOBAR:$psvar[2]"
-    else
+        set-icon-title   "${HOST%%.*}:$psvar[2]"
         set-icon-title   "${HOST%%.*}:$psvar[2]"
     fi
-    set-window-title "FOOBAR:$psvar[1]"
+    set-window-title "${HOST%%.*}:$psvar[1]"
 fi
 
 export TITLE="BAR:$psvar[1]"
@@ -214,7 +213,7 @@ alias kd="kdestroy"
 alias dev='ssh trampoline.net.isc.upenn.edu -t tmux new -t dev -s dev-clone`mktemp -u XXX`'
 alias drahtlos='ssh drahtlos.dccs.upenn.edu -t tmux new -t remote -s remote-clone`mktemp -u XXX`'
 alias home='ssh -p 22222 home.randomcomp.net -t tmux new -t remote -s remote-clone`mktemp -u XXX`'
-alias jump='ssh trampoline.net.isc.upenn.edu -t tmux new -t remote -s remote-clone`mktemp -u XXX`'
+alias jump='ssh trampoline.net.isc.upenn.edu -t tmux attach'
 alias lab='ssh trampoline.net.isc.upenn.edu -t tmux new -t lab -s lab-clone`mktemp -u XXX`'
 alias routers='ssh trampoline.net.isc.upenn.edu -t tmux new -t routers -s routers-clone`mktemp -u XXX`'
 alias wifi='ssh trampoline.net.isc.upenn.edu -t tmux new -t wifi -s wifi-clone`mktemp -u XXX`'
