@@ -138,19 +138,19 @@ set "$1" "${2:-$PWD}"                      # Replace $2 with $PWD if blank
 #echo "DEBUG: \$psvar[1] -> $psvar[1]"
 
 if [ ${1[(wi)^(*=*|sudo|-*)]} -ne 0 ]; then
-    psvar[2]="${1[(wr)^(*=*|sudo|ssh|-*)]}"        # The one-word command to execute
+    psvar[2]="${1[(wr)^(*=*|sudo|ssh|aruba|-*)]}"        # The one-word command to execute
 else
     psvar[2]="$1"                              # The whole line if only one wordA
 fi                                         # or a variable assignment, etc
 
 if [ $TMUX ]; then 
     #if booleancheck "$shellopts[screen_names]" ; then
-        set-screen-title   "$psvar[2]"
-        set-window-title "${HOST%%.*}:$psvar[2]"
-        #set-screen-title "SOMETHING:$psvar[2]"           # set the command as the screen title
+    set-screen-title   "$psvar[2]"
+    set-window-title "${HOST%%.*}:$psvar[2]"
+    #set-screen-title "SOMETHING:$psvar[2]"           # set the command as the screen title
     #fi
 else
-#i booleancheck "$shellopts[titlebar]" ; then
+    #i booleancheck "$shellopts[titlebar]" ; then
     if [[ -z $SSH_CLIENT && -z $TMUX ]] ; then
         set-icon-title   "${HOST%%.*}:$psvar[2]"
         set-icon-title   "${HOST%%.*}:$psvar[2]"
@@ -250,29 +250,29 @@ setopt AutoMenu            2>/dev/null
 setopt ExtendedGlob        2>/dev/null
 # Before storing an item to the history, delete any dups
 setopt HistIgnoreAllDups   2>/dev/null
-     # Append each line to the history immediately after it is entered
+# Append each line to the history immediately after it is entered
 setopt ShareHistory        2>/dev/null
-     # Complete Mafile to Makefile if cursor is on the f
+# Complete Mafile to Makefile if cursor is on the f
 setopt CompleteInWord      2>/dev/null
-     # Allow completion list columns to be different sizes
+# Allow completion list columns to be different sizes
 setopt ListPacked          2>/dev/null
-     # cd adds directories to the stack like pushd
+# cd adds directories to the stack like pushd
 setopt AutoPushd           2>/dev/null
-     # the same folder will never get pushed twice
+# the same folder will never get pushed twice
 setopt PushdIgnoreDups     2>/dev/null
-     # - and + are reversed after cd
+# - and + are reversed after cd
 setopt PushdMinus          2>/dev/null
-     # pushd will not print the directory stack after each invocation
+# pushd will not print the directory stack after each invocation
 setopt PushdSilent         2>/dev/null
-     # pushd with no parameters acts like 'pushd $HOME'
+# pushd with no parameters acts like 'pushd $HOME'
 setopt PushdToHome         2>/dev/null
-     # if alias foo=bar, complete as if foo were entered, rather than bar
+# if alias foo=bar, complete as if foo were entered, rather than bar
 setopt CompleteAliases     2>/dev/null
-     # Allow short forms of function contructs
+# Allow short forms of function contructs
 setopt ShortLoops          2>/dev/null
-     # Automatically continue disowned jobs
+# Automatically continue disowned jobs
 setopt AutoContinue        2>/dev/null
-     # Attempt to spell-check command names - I mistype a lot.
+# Attempt to spell-check command names - I mistype a lot.
 setopt Correct             2>/dev/null
 
 #### Environment variables
@@ -280,8 +280,8 @@ export SHELL=$(whence -p zsh)             # Let apps know the full path to zsh
 export DIRSTACKSIZE=10                    # Max number of dirs on the dir stack
 
 if booleancheck "$shellopts[utf8]" ; then
-  export LANG=en_US.UTF-8                 # Use a unicode english locale
-  #export LC_CTYPE=C                      # but fix stupid not-unicode man pages
+    export LANG=en_US.UTF-8                 # Use a unicode english locale
+    #export LC_CTYPE=C                      # but fix stupid not-unicode man pages
 fi
 
 export HISTSIZE=5500                      # Lines of history to save in mem
@@ -294,13 +294,13 @@ export HOST=${HOST:-$HOSTNAME}            # Ensure that $HOST contains hostname
 # lets them be sourced much faster - A good idea for any zsh file that's not
 # updated excessively often.
 if autoloadable zrecompile ; then
-  autoload -U zrecompile
-  zrecompile -pq $ZDOTDIR/.zshrc
-  zrecompile -pq $ZDOTDIR/.zprofile
-  zrecompile -pq $ZDOTDIR/.zcompdump
-  # We attempt to compile every file in .zfunctions whose name does not
-  # contain a dot and does not end in a tilde.
-  zrecompile -pq $ZDOTDIR/.zfunctions.zwc $ZDOTDIR/.zfunctions/^(*~|*.*);
+    autoload -U zrecompile
+    zrecompile -pq $ZDOTDIR/.zshrc
+    zrecompile -pq $ZDOTDIR/.zprofile
+    zrecompile -pq $ZDOTDIR/.zcompdump
+    # We attempt to compile every file in .zfunctions whose name does not
+    # contain a dot and does not end in a tilde.
+    zrecompile -pq $ZDOTDIR/.zfunctions.zwc $ZDOTDIR/.zfunctions/^(*~|*.*);
 fi
 
 ### Key bindings
@@ -308,12 +308,12 @@ bindkey -e                                       # Use emacs keybindings
 #bindkey -v                                     # Use vi keybindings
 
 if zmodload -i zsh/terminfo; then
-  [ -n "${terminfo[khome]}" ] &&
-  bindkey "${terminfo[khome]}" beginning-of-line # Home
-  [ -n "${terminfo[kend]}" ] &&
-  bindkey "${terminfo[kend]}"  end-of-line       # End
-  [ -n "${terminfo[kdch1]}" ] &&
-  bindkey "${terminfo[kdch1]}" delete-char       # Delete
+    [ -n "${terminfo[khome]}" ] &&
+    bindkey "${terminfo[khome]}" beginning-of-line # Home
+    [ -n "${terminfo[kend]}" ] &&
+    bindkey "${terminfo[kend]}"  end-of-line       # End
+    [ -n "${terminfo[kdch1]}" ] &&
+    bindkey "${terminfo[kdch1]}" delete-char       # Delete
 fi
 
 bindkey "\e[1~"   beginning-of-line              # Another Home
@@ -343,29 +343,29 @@ bindkey $'\xC3\xB1' push-line-or-edit            # Same, for my multibyte setup
 # after each history search, but will return to its original position before
 # actually searching.
 if autoloadable history-search-end; then
-  autoload -U history-search-end
-  zle -N history-beginning-search-backward-end history-search-end
-  zle -N history-beginning-search-forward-end history-search-end
-  bindkey "^[[A" history-beginning-search-backward-end
-  bindkey "^[[B" history-beginning-search-forward-end
+    autoload -U history-search-end
+    zle -N history-beginning-search-backward-end history-search-end
+    zle -N history-beginning-search-forward-end history-search-end
+    bindkey "^[[A" history-beginning-search-backward-end
+    bindkey "^[[B" history-beginning-search-forward-end
 else
-  bindkey "^[[A" history-beginning-search-backward
-  bindkey "^[[B" history-beginning-search-forward
+    bindkey "^[[A" history-beginning-search-backward
+    bindkey "^[[B" history-beginning-search-forward
 fi
 
 bindkey "^I"      complete-word                  # Tab completes, never expands
-                                                 # so expansion can be handled
-                                                 # by a completer.
+# so expansion can be handled
+# by a completer.
 
 #### Function to hide prompts on the line - Will be replaced eventually
 function TogglePrompt {
-  if [[ -n "$PS1" && -n "$RPS1" ]]; then
+if [[ -n "$PS1" && -n "$RPS1" ]]; then
     OLDRPS1=$RPS1; OLDPS1=$PS1
     unset RPS1 PS1
-  else
+else
     RPS1=$OLDRPS1; PS1=$OLDPS1
-  fi
-  zle reset-prompt
+fi
+zle reset-prompt
 }
 zle -N TogglePrompt
 
@@ -373,9 +373,9 @@ bindkey "^X^X" TogglePrompt
 
 #### Function to allow Ctrl-z to toggle between suspend and resume
 function Resume {
-  zle push-input
-  BUFFER="fg"
-  zle accept-line
+zle push-input
+BUFFER="fg"
+zle accept-line
 }
 zle -N Resume
 
@@ -383,9 +383,9 @@ bindkey "^Z" Resume
 
 #### Allow interactive editing of command line in $EDITOR
 if autoloadable edit-command-line; then
-  autoload -U edit-command-line
-  zle -N edit-command-line
-  bindkey "\ee" edit-command-line
+    autoload -U edit-command-line
+    zle -N edit-command-line
+    bindkey "\ee" edit-command-line
 fi
 
 ### Misc
@@ -398,19 +398,19 @@ export MINICOM='-w -z  -C /dev/null -c off'
 # Requires manpageview.vim from
 # http://vim.sourceforge.net/scripts/script.php?script_id=489
 if [[ -f $HOME/.vim/plugin/manpageview.vim ]]; then
-  function man {
+    function man {
     [[ $# -eq 0 ]] && return 1
     vim -R -c "Man $*" -c "silent! only"
-  }
+}
 
-  function info {
-    [[ $# -eq 1 ]] || return 1
-    vim -R -c "Man $1.i" -c "silent! only"
+function info {
+[[ $# -eq 1 ]] || return 1
+vim -R -c "Man $1.i" -c "silent! only"
   }
 
   function perldoc {
-    [[ $# -eq 1 ]] || return 1
-    vim -R -c "Man $1.pl" -c "silent! only"
+  [[ $# -eq 1 ]] || return 1
+  vim -R -c "Man $1.pl" -c "silent! only"
   }
 fi
 
@@ -427,88 +427,88 @@ which lesspipe &>/dev/null && eval "$(lesspipe)"
 autoloadable colorscheme && autoload -U colorscheme
 
 if [[ -z "$COLORSCHEME" ]]; then
-  function PickScheme() {
+    function PickScheme() {
     local xprop="$(xprop WM_CLASS -id $WINDOWID 2>/dev/null)"
     (( $? == 0 )) && [[ -n "$xprop" ]] || return
     if [[ "$xprop" == (WM_CLASS\(STRING\) = \"fxterm\", \"*\") ]]; then
-      colorscheme light
+        colorscheme light
     else
-      colorscheme dark
+        colorscheme dark
     fi
-  }
-  #PickScheme
-  colorscheme dark
+}
+#PickScheme
+colorscheme dark
 fi
 
 
 ### Completion
 if autoloadable compinit; then
-autoload -U compinit; compinit # Set up the required completion functions
+    autoload -U compinit; compinit # Set up the required completion functions
 
-# Order in which completion mechanisms will be tried:
-# 1. Try completing the results of an old list
-#    ( for use with history completion on ctrl-space )
-# 2. Try to complete using context-sensitive completion
-# 3. Try interpretting the typed text as a pattern and matching it against the
-#    possible completions in context
-# 4. Try completing the word just up to the cursor, ignoring anything past it.
-# 5. Try combining the effects of completion and correction.
-zstyle ':completion:*' completer _oldlist _complete _match \
-                                 _expand _prefix _approximate
+    # Order in which completion mechanisms will be tried:
+    # 1. Try completing the results of an old list
+    #    ( for use with history completion on ctrl-space )
+    # 2. Try to complete using context-sensitive completion
+    # 3. Try interpretting the typed text as a pattern and matching it against the
+    #    possible completions in context
+    # 4. Try completing the word just up to the cursor, ignoring anything past it.
+    # 5. Try combining the effects of completion and correction.
+    zstyle ':completion:*' completer _oldlist _complete _match \
+    _expand _prefix _approximate
 
-# Don't complete backup files as executables
-zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'
+    # Don't complete backup files as executables
+    zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'
 
-# If I don't have ``executable'', don't complete to the _executable completer
-zstyle ':completion:*:functions' ignored-patterns '_*'
+    # If I don't have ``executable'', don't complete to the _executable completer
+    zstyle ':completion:*:functions' ignored-patterns '_*'
 
-# Match lowercase letters to uppercase letters and dashes to underscores (not
-# vice-versa), and allow ".t<TAB>" to list all files containing the text ".t"
-zstyle ':completion:*' matcher-list 'm:{a-z-}={A-Z_}' 'r:|.=** r:|=*'
+    # Match lowercase letters to uppercase letters and dashes to underscores (not
+    # vice-versa), and allow ".t<TAB>" to list all files containing the text ".t"
+    zstyle ':completion:*' matcher-list 'm:{a-z-}={A-Z_}' 'r:|.=** r:|=*'
 
-# Try to use verbose listings when we have more information
-zstyle ':completion:*' verbose true
+    # Try to use verbose listings when we have more information
+    zstyle ':completion:*' verbose true
 
-# Allows /u/l/b<TAB> to menu complete as though you typed /u*/l*/b*<TAB>
-zstyle ':completion:*:paths' expand suffix
+    # Allows /u/l/b<TAB> to menu complete as though you typed /u*/l*/b*<TAB>
+    zstyle ':completion:*:paths' expand suffix
 
-# Menu complete on ambiguous paths
-zstyle ':completion:*:paths' list-suffixes true
+    # Menu complete on ambiguous paths
+    zstyle ':completion:*:paths' list-suffixes true
 
-# Have '/home//<TAB>' list '/home/*', rather than '/home/*/*'
-zstyle ':completion:*:paths' squeeze-slashes false
+    # Have '/home//<TAB>' list '/home/*', rather than '/home/*/*'
+    zstyle ':completion:*:paths' squeeze-slashes false
 
-# Enter "menu selection" if there are at least 2 choices while completing
-zstyle ':completion:*' menu select=2
+    # Enter "menu selection" if there are at least 2 choices while completing
+    zstyle ':completion:*' menu select=2
 
-# vi or vim will match first files that don't end in a backup extension,
-# followed by files that do, followed last by files that are known to be binary
-# types that should probably not be edited.
-zstyle ':completion:*:*:(vi|vim):*:*' \
+    # vi or vim will match first files that don't end in a backup extension,
+    # followed by files that do, followed last by files that are known to be binary
+    # types that should probably not be edited.
+    zstyle ':completion:*:*:(vi|vim):*:*' \
     file-patterns '*~(*.o|*~|*.old|*.bak|*.pro|*.zwc|*.swp):regular-files' \
-                  '(*~|*.bak|*.old):backup-files' \
-                  '(*.o|*.pro|*.zwc|*.swp):hidden-files'
+    '(*~|*.bak|*.old):backup-files' \
+    '(*.o|*.pro|*.zwc|*.swp):hidden-files'
 
-# Use colors in tab completion listings
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+    # Use colors in tab completion listings
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# Add a space after an expansion, so that 'ls $TERM' expands to 'ls xterm '
-zstyle ':completion:*:expand:*' add-space true
+    # Add a space after an expansion, so that 'ls $TERM' expands to 'ls xterm '
+    zstyle ':completion:*:expand:*' add-space true
 
-# Tweaks to kill: list processes using the given command and show them in a menu
-zstyle ':completion:*:*:kill:*' command 'ps -u$USER -o pid,%cpu,tty,cputime,cmd'
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:*:kill:*' force-list always
+    # Tweaks to kill: list processes using the given command and show them in a menu
+    zstyle ':completion:*:*:kill:*' command 'ps -u$USER -o pid,%cpu,tty,cputime,cmd'
+    zstyle ':completion:*:*:kill:*' menu yes select
+    zstyle ':completion:*:*:kill:*' force-list always
 
-# Use caching for commands that would like a cache.
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ${ZDOTDIR}/.zcache
+    # Use caching for commands that would like a cache.
+    zstyle ':completion:*' use-cache on
+    zstyle ':completion:*' cache-path ${ZDOTDIR}/.zcache
 
-# Page long completion lists, using this prompt.
-zstyle ':completion:*' list-prompt %S%L -- More --%s
+    # Page long completion lists, using this prompt.
+    zstyle ':completion:*' list-prompt %S%L -- More --%s
 
-# Show a warning when no completions were found
-zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
+    # Show a warning when no completions were found
+    zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
 fi
 
 ### Prompt
@@ -529,10 +529,10 @@ typeset +x PS1     # Don't export PS1 - Other shells just mangle it.
 # shown, and to set the screen name / titlebar text based on the command line,
 # unless the user has disabled those features.
 function preexec {
-  booleancheck "$shellopts[preexec]" || return # Return if we're not wanted
-  shownexterr=1
-  #print -n "\e[K"    # Why did I do this?
-  set-title-by-cmd $1
+booleancheck "$shellopts[preexec]" || return # Return if we're not wanted
+shownexterr=1
+#print -n "\e[K"    # Why did I do this?
+set-title-by-cmd $1
 }
 
 #### Precmd is run before displaying the new prompt
@@ -540,32 +540,32 @@ function preexec {
 # attempt to interpret as a signal name if it seems to be in the correct range,
 # and reset our titlebar text to what it was before running the command.
 function precmd {
-  local exitstatus=$?
+local exitstatus=$?
 
-  [[ -z "$RPS1" ]] &&   booleancheck "$shellopts[rprompt]" && rprompt-setup
-  [[ -n "$RPS1" ]] && ! booleancheck "$shellopts[rprompt]" && rprompt-setup
+[[ -z "$RPS1" ]] &&   booleancheck "$shellopts[rprompt]" && rprompt-setup
+[[ -n "$RPS1" ]] && ! booleancheck "$shellopts[rprompt]" && rprompt-setup
 
-  booleancheck "$shellopts[precmd]" || return # Return if we're not wanted
+booleancheck "$shellopts[precmd]" || return # Return if we're not wanted
 
-  psvar[4]=$#jobtexts
-  [[ $psvar[4] -eq 0 || "$shownexterr" -le 0 ]] && psvar[4]=()
+psvar[4]=$#jobtexts
+[[ $psvar[4] -eq 0 || "$shownexterr" -le 0 ]] && psvar[4]=()
 
-  local sigstart=127
-  [[ "$OSTYPE" == (solaris*) ]] && sigstart=-1 # This makes it work a BIT better
+local sigstart=127
+[[ "$OSTYPE" == (solaris*) ]] && sigstart=-1 # This makes it work a BIT better
 
-  if [[ "$exitstatus" -gt 0 && "$shownexterr" -gt 0 ]]; then
+if [[ "$exitstatus" -gt 0 && "$shownexterr" -gt 0 ]]; then
     if [[ "$exitstatus" -gt "$sigstart" \
-     && "$exitstatus" -le "($sigstart+${#signals})" ]]; then
-      psvar[3]="[${signals[exitstatus-sigstart]}]"
+        && "$exitstatus" -le "($sigstart+${#signals})" ]]; then
+        psvar[3]="[${signals[exitstatus-sigstart]}]"
     elif [[ "$exitstatus" -eq 127 ]]; then
-      psvar[3]="[Not Found]"
+        psvar[3]="[Not Found]"
     else
-      psvar[3]="[${exitstatus}]"
+        psvar[3]="[${exitstatus}]"
     fi
-  else
+else
     psvar[3]=""
-  fi
-  shownexterr=0;
+fi
+shownexterr=0;
 
   if booleancheck "$shellopts[titlebar]" ; then
       #if [ $TMUX ]; then

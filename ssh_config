@@ -9,82 +9,6 @@ ServerAliveInterval 60
 #    ControlMaster auto
 #    ControlPath ~/.ssh/cm_socket/%r@%h:%p
 
-host linode
-    host newark472.linode.com
-    user linode237389
-
-host nic1 master
-    host 128.91.243.89
-
-
-host nic2
-    host 128.91.241.146
-
-
-host nic3
-    host 128.91.241.147
-
-
-host vag4
-    host 10.50.80.2
-
-
-host vag5
-    host 10.50.80.4
-
-
-host modv4
-    host 10.50.80.18
-
-
-host modv5
-    host 10.50.80.20
-
-
-host levy4
-    host 10.50.80.34
-
-
-host levy5
-    host 10.50.80.36
-
-
-host hnt4
-    host 128.91.241.114
-
-
-host hnt5
-    host 128.91.241.115
-
-
-host evoluo
-    host 128.91.241.2
-
-
-host local1.wlan-dev
-    host 128.91.241.179
-
-
-host local2.wlan-dev
-    host 128.91.241.180
-
-
-host proberen.wlan-test
-    host 128.91.243.205
-
-
-host local1.wlan-test
-    host 128.91.243.54
-
-
-host local2.wlan-test
-    host 128.91.240.90
-
-
-host dork
-    host 128.91.241.182
-
-
 host es 
     hostname EISENSCHWEIN.router.upenn.edu
 
@@ -99,3 +23,9 @@ host dynes-vag
 host home
     hostname home.randomcomp.net
     port 22222
+
+host phl-00
+    hostname phl-00.magpi.net
+
+host dork
+    hostname dork.wlan-dev.router.upenn.edu
