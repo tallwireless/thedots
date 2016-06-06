@@ -108,12 +108,18 @@ noremap <silent> <C-j> <C-w>j
 noremap <silent> <C-k> <C-w>k
 
 " Space toggles folds
-"noremap <silent> <Space> za
+noremap <silent> <S-f> za
 
 " \s toggles spell checking
 noremap <silent> <Leader>s :call ToggleSpell()<CR>
 noremap <silent> <Leader>m :call SaveMake()<CR>
 
+set clipboard=unnamed
+
+
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 
 """ Functions
 function! ToggleSpell()
