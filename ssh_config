@@ -29,3 +29,17 @@ host phl-00
 
 host dork
     hostname dork.wlan-dev.router.upenn.edu
+
+
+host m0
+    hostname 10.246.251.110
+    user ubuntu
+
+host m1 
+    hostname 10.246.251.112
+    user ubuntu
+
+host m2
+    hostname 10.246.251.113
+    user ubuntu
+
