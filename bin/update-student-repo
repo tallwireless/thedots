@@ -1,0 +1,47 @@
+#!/bin/bash
+
+
+# Author: Charles Rumford (charlesr@cs.drexel.edu)
+#
+# Usage:
+#   update-student-repo <date>
+# 
+#   <date>      This is the date in the format YYYY-MM-DD. Repos will be
+#               updated to the commit the day before.
+
+function usage {
+
+echo "Usage:"
+echo "  update-student-repo <date>"
+echo ""
+echo "  <date>      This is the date in the format YYYY-MM-DD. Repos will be"
+echo "              updated to the commit of that day."
+
+}
+if [ -z $1 ]; then
+    echo "$0: NEED DATE!"
+    usage
+    exit 1
+fi
+DATE=$1
+
+for STUDENT in `ls`; do 
+    echo "$STUDENT:"
+    echo -e "\tUpdating Git Repo"
+    git -C $STUDENT checkout master -q
+    git -C $STUDENT pull -q
+    if [ $? -ne 0 ]; then
+        echo -e "\tFAILED UP PULL THE REPO"
+        continue;
+    fi
+    C_HASH=`git -C $STUDENT log -1 --pretty=%h --before=$DATE`
+    C_DATE=`git -C $STUDENT log -1 --pretty=%ci --before=$DATE`
+    echo -e "\tChecking out commit ${C_HASH} commited at ${C_DATE}"
+    git -C $STUDENT checkout -q $C_HASH 
+    if [ $? -ne 0 ]; then
+        echo -e "\tFAILED TO CHECK OUT ${C_HASH}"
+        continue
+    fi
+    echo -e "\tStudent up date complete"
+done
+cd $CUR_PWD

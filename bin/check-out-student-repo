@@ -1,0 +1,50 @@
+#!/bin/bash
+
+#
+# Author: Charles Rumford (charlesr@cs.drexel.edu)
+#
+# Usage:
+#  check-out-student-repo <group> <repo-location>
+#
+#   group           Unix Group to get usernames
+#   repo-location   location of the repo to checkout based in each users home
+#                   directory
+function usage() {
+
+    echo Usage:
+    echo " $0 <group> <repo-location>"
+    echo
+    echo   group           Unix Group to get usernames
+    echo   repo-location   location of the repo to checkout based in each users home
+    echo                   directory
+}
+
+if [ -z $1 ]; then
+    usage
+    exit 1
+else
+    getent group $1 > /dev/null;
+    if [ $? -ne 0 ]; then
+        echo "$0: GROUP DOESN'T EXIST"
+        usage
+        exit 2 
+    fi
+    GROUP=$1
+fi
+
+if [ -z $2 ]; then
+    usage
+    exit 3
+fi
+
+REPO="$2"
+
+for USR in `getent group $GROUP | cut -f 4 -d : | sed 's/,/ /g'`; do
+    echo -ne "Checking out ~$USR/$REPO\t\t"
+    git clone "/home/${USR}/${REPO}" "$USR" &> /dev/null
+    if [ $? -ne 0 ]; then
+        echo "FAILED"
+    else
+        echo "COMPLETE"
+    fi
+done
