@@ -155,7 +155,7 @@ augroup mail
   au! BufRead,BufNewFile *.mail   setfiletype mail
 augroup END
 
-color darkblue
+color torte
  
 set mouse-=a
 
