@@ -61,7 +61,7 @@ function check-for-running-agent {
 }
 
 if [ $SSH_AGENT_PID ]; then 
-    echo "We have an SSH_AGENT_PID"
+    echo "We have an SSH_AGENT_PID on $HOST"
     if [ ! check-for-running-agent ]; then
         #the agent is dead; maybe start a new one?
         setup-keychain
@@ -70,7 +70,7 @@ if [ $SSH_AGENT_PID ]; then
         echo "Problems with SSH agent. Please investigate."
     fi
 else
-    echo "We don't have an SSH_AGENT_PID"
+    echo "We don't have an SSH_AGENT_PID on $HOST"
     if [ -f ~/.keychain ]; then
         . ~/.keychain
         if [ ! check-for-running-agent ]; then
