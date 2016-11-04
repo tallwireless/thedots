@@ -38,27 +38,51 @@ if [ -d /opt/local/bin ]; then
 fi
 
 ### Dealing with SSH-AGENT
-if [$SSH_AGENT_PID ]; then 
-    if check-for-running-agent; then
+function setup-keychain {
+    echo -ne "No SSH Agent...Starting SSH Agent"
+    if [ ! -f ~/.keychain ]; then
+        touch ~/.keychain
+        chmod 600 ~/.keychain
+    fi
+    #Let's start up an SSH Agent and snag it's information
+    ssh-agent > ~/.keychain
+
+    #let's load the ssh-agent we just started
+    . ~/.keychain
+    echo "....SSH Agent Loaded"
+    echo "Adding Keys..."
+    #let's add some keys to it
+    ssh-add
+}
+
+function check-for-running-agent {
+    ps auxww | grep -v grep | grep $SSH_AGENT_PID > /dev/null
+    return $?
+}
+
+if [ $SSH_AGENT_PID ]; then 
+    echo "We have an SSH_AGENT_PID"
+    if [ ! check-for-running-agent ]; then
         #the agent is dead; maybe start a new one?
         setup-keychain
     fi
-    if check-for-running-agent; then
+    if [ ! check-for-running-agent ]; then
         echo "Problems with SSH agent. Please investigate."
     fi
 else
+    echo "We don't have an SSH_AGENT_PID"
     if [ -f ~/.keychain ]; then
         . ~/.keychain
-        if check-for-running-agent; then
+        if [ ! check-for-running-agent ]; then
             echo "Found ~/.keychain file, but the agent seems to be dead. Restarting..."
             setup-keychain
-            if check-for-running-agent; then
+            if [ ! check-for-running-agent ]; then
                 echo "Problems with SSH agent. Please investigate."
             fi
         fi
     else
         setup-keychain
-        if check-for-running-agent; then
+        if [ ! check-for-running-agent ]; then
             echo "Problems with SSH agent. Please investigate."
         fi
     fi
