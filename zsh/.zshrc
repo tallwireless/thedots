@@ -655,6 +655,7 @@ function verify-agent-vars {
 
 # Caches the ssh agent variables to a file
 function save-agent-vars {
+  echo "Saving vars"
   emulate -L zsh
 
   : >~/.keychain/"$HOST".sh
@@ -664,13 +665,14 @@ function save-agent-vars {
 
 # Retrieves the ssh agent variables
 function load-agent-vars {
-  [ -r ~/.keychain/"$HOST".sh ] && . ~/.keychain/"$HOST".sh
+    echo "Loading agent-vars"
+    [ -r ~/.keychain/"$HOST".sh ] && . ~/.keychain/"$HOST".sh
 }
-
+ -
 # Functions to wrap commands that would like a working keychain
-function ssh scp svn {
-  setup-keychain; command "$0" "$@"
-}
+#function ssh scp svn {
+#  setup-keychain; command "$0" "$@"
+#}
 
 function setup-keychain {
   # keychain doesn't strike me as that complicated.  Let's try to fake it.
