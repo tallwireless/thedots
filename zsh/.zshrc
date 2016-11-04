@@ -630,90 +630,28 @@ rprompt-setup
 SPROMPT=$'Should zsh correct "%R" to "%r" ? ([\e[0;32mY\e[0m]es/[\e[0;31mN\e[0m]o/[E]dit/[A]bort) '
 
 
-### Set up our ssh keychain
-# Checks if an ssh-agent seems to be working
-function verify-agent-vars {
-  # Definitely not SSH_AUTH_SOCK is empty
-  [[ -z "$SSH_AUTH_SOCK" ]] && return 1
-
-  # Nor if SSH_AGENT_PID (local agent) and SSH_CLIENT (forwarding) are unset
-  [[ -z "$SSH_AGENT_PID" && -z "$SSH_CLIENT" ]] && return 1
-
-  # Nor is it valid if the agent's process wasn't started by us
-  [[ -n "$SSH_AGENT_PID" && ! -O /proc/"$SSH_AGENT_PID" ]] && return 1
-
-  # Nor if the socket isn't a socket
-  [[ ! -S "$SSH_AUTH_SOCK" ]] && return 1
-
-  # Nor if the socket isn't owned by us
-  [[ ! -O "$SSH_AUTH_SOCK" ]] && return 1
-
-  ssh-add -l &>/dev/null
-
-  [[ $? -ne 2 ]] # Return 0 unless ssh-add returned 2 (couldn't find agent)
-}
-
-# Caches the ssh agent variables to a file
-function save-agent-vars {
-  echo "Saving vars"
-  emulate -L zsh
-
-  : >~/.keychain/"$HOST".sh
-  for var in SSH_AGENT_PID SSH_AUTH_SOCK SSH_CLIENT SSH_CONNECTION SSH_TTY
-    echo export $var=${(qq)${(e)var/#/$}} >>~/.keychain/"$HOST".sh
-}
-
-# Retrieves the ssh agent variables
-function load-agent-vars {
-    echo "Loading agent-vars"
-    [ -r ~/.keychain/"$HOST".sh ] && . ~/.keychain/"$HOST".sh
-}
- -
-# Functions to wrap commands that would like a working keychain
-#function ssh scp svn {
-#  setup-keychain; command "$0" "$@"
-#}
-
 function setup-keychain {
-  # keychain doesn't strike me as that complicated.  Let's try to fake it.
-  # Give us a directory to store the info between logins
-  [ -d ~/.keychain ] || { mkdir ~/.keychain; chmod 700 ~/.keychain }
+    echo -ne "No SSH Agent...Starting SSH Agent"
+    if [ ! -f ~/.keychain ]; then
+        touch ~/.keychain
+        chmod 600 ~/.keychain
+    fi
+    #Let's start up an SSH Agent and snag it's information
+    ssh-agent > ~/.keychain
 
-  # Check existing variables, store and use them if valid
-  if verify-agent-vars; then
-    save-agent-vars
-    return 0
-  fi
-
-  # Try cached variables
-  load-agent-vars
-  verify-agent-vars && return 0
-
-  # Can't do much to help at this point if we can't start an agent...
-  whence -p ssh-agent &>/dev/null || return 0
-
-  # Or if we don't have any public keys...
-  set -- ~/.ssh/id_[rd]sa(N)
-  [ $# -eq 0 ] && return 0
-
-  # Otherwise, we can try starting a new agent.
-  eval $(ssh-agent)
-  verify-agent-vars || return 1
-  save-agent-vars
+    #let's load the ssh-agent we just started
+    . ~/.keychain
+    echo "....SSH Agent Loaded"
+    echo "Adding Keys..."
+    #let's add some keys to it
+    ssh-add
 }
 
-###REMOVED 10/14/2011 
-# Removed to prevent overload of ssh-agent processes
-#setup-keychain
-
-### Uncategorized
-# mplayer wrapper to work around xorg brightness change on issuing xset -dpms
-function mplayer {
-  [ -n $commands[brightness] ] && brightness=$(brightness get)
-  xset -dpms
-  [ -n $brightness ] && brightness set "$brightness"
-  command mplayer "$@"
+function check-for-running-agent {
+    ps auxww | grep -v grep | grep $SSH_AGENT_PID > /dev/null
+    return $?
 }
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+

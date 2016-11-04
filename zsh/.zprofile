@@ -36,3 +36,30 @@ if [ -d /opt/local/bin ]; then
   MANPATH=$MANPATH:/opt/local/man
   INFOPATH=$INFOPATH:/opt/local/info
 fi
+
+### Dealing with SSH-AGENT
+if [$SSH_AGENT_PID ]; then 
+    if check-for-running-agent; then
+        #the agent is dead; maybe start a new one?
+        setup-keychain
+    fi
+    if check-for-running-agent; then
+        echo "Problems with SSH agent. Please investigate."
+    fi
+else
+    if [ -f ~/.keychain ]; then
+        . ~/.keychain
+        if check-for-running-agent; then
+            echo "Found ~/.keychain file, but the agent seems to be dead. Restarting..."
+            setup-keychain
+            if check-for-running-agent; then
+                echo "Problems with SSH agent. Please investigate."
+            fi
+        fi
+    else
+        setup-keychain
+        if check-for-running-agent; then
+            echo "Problems with SSH agent. Please investigate."
+        fi
+    fi
+fi
