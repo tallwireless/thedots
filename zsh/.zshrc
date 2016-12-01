@@ -25,6 +25,7 @@
 # Disable flow control, since it really just annoys me.
 stty -ixon &>/dev/null
 
+
 #### Optional Behaviors
 # Setting any of these options will modify the behavior of a new shell to
 # better suit your needs.  These values given specify the default for each
@@ -654,4 +655,11 @@ function check-for-running-agent {
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=\$vcs_info_msg_0_
+# PROMPT=\$vcs_info_msg_0_'%# '
+zstyle ':vcs_info:git:*' formats '%b'
 
