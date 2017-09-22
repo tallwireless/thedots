@@ -161,3 +161,9 @@ set mouse-=a
 
 set modeline
 set modelines=2
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'https://github.com/junegunn/goyo.vim'
+
+call plug#end()

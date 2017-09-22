@@ -21,7 +21,7 @@ host dynes-vag
     user admin
 
 host home
-    hostname home.randomcomp.net
+    hostname home.tallwireless.com
     port 22222
 
 host phl-00
