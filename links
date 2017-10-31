@@ -4,7 +4,8 @@
 .xmodmaprc
 .zsh_local
 ssh_config .ssh/config
-ssh_authorized_keys2 .ssh/authorized_keys2
+i3 .config/i3
+i3 .config/sway
 .screenrc
 .tmux.conf
 bin
