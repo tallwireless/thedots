@@ -103,7 +103,7 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-bindsym $mod+' workspace email
+bindsym $mod+quote workspace email
 
 #Thunderbird Stuff
 assign [class="^Thunderbird$"] email
