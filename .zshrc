@@ -61,7 +61,13 @@ ZSH_CUSTOM=~/configs/custom-zsh
 plugins=(
   git
   zsh-syntax-highlighting
-  zsh-autosuggestions
+  ssh-agent
+  colored-man-pages
+  common-aliases
+  cp
+  systemd
+  tmux
+  
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -77,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+export EDITOR='vim'
 # fi
 
 # Compilation flags
@@ -96,5 +102,11 @@ alias jump="ssh trampoline.net.isc.upenn.edu -t tmux attach"
 alias ki="kinit charlesr@UPENN.EDU"
 alias kd="kdestroy"
 alias kl="klist"
+alias vi="vim"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+
+
+# ssh-agent customizations
+zstyle :omz:plugins:ssh-agent agent-forwarding on
