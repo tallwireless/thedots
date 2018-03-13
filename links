@@ -4,10 +4,9 @@
 .xmodmaprc
 .zsh_local
 ssh_config .ssh/config
-i3 .config/i3
-i3status .config/i3status
-i3 .config/sway
 .screenrc
 .tmux.conf
 bin
-local
+oh-my-zsh .oh-my-zsh
+.zshrc .zshrc
+.zsh-update .zsh-update

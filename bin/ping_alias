@@ -1,0 +1,5 @@
+alias noc1-ping='ping -I noc1_vrf'
+alias noc2-ping='ping -I noc2_test'
+alias noc1-tr='traceroute -i noc1_vrf'
+alias noc2-tr='traceroute -i noc2_test'
+
