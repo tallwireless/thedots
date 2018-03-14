@@ -184,7 +184,6 @@ bindkey "^[[B" history-beginning-search-forward-end
     zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
 
     if ! (( ${+TMUX_PANE} ))  && (( ${+ZSH_TMUX_TERM} )); then                                             
-        echo "here" > ~/tmp/foobar
         DISABLE_AUTO_TITLE="true"                                                            
 fi  
 
