@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+# Check to see if there is a tmux session already open
+
+
+# Create the sessions
+
+
+
+tmux new-session -ds LAB-ROUTER
+tmux new-session -ds LAB-FW
+tmux new-session -ds LAB-ELECTRONICS
+tmux new-session -ds LAB-SERVER
+tmux new-session -ds PROD-CORE
+tmux new-session -ds PROD-ELECTRONICS
+tmux new-session -ds PROD-FW
+tmux new-session -ds PROD-SERVER
+tmux new-session -ds PROD-WLAN
+tmux new-session -ds DEV
+
