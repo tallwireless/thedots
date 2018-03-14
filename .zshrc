@@ -110,3 +110,75 @@ alias vi="vim"
 
 # ssh-agent customizations
 zstyle :omz:plugins:ssh-agent agent-forwarding on
+
+setopt AutoList            2>/dev/null
+setopt NoBashAutoList      2>/dev/null
+setopt NoBeep              2>/dev/null
+setopt HistIgnoreAllDups   2>/dev/null
+setopt CompleteInWord      2>/dev/null
+setopt CompleteAliases     2>/dev/null
+setopt Correct             2>/dev/null
+
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+
+    zstyle ':completion:*' completer _oldlist _complete _match \
+    _expand _prefix _approximate
+
+    # Don't complete backup files as executables
+    zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'
+
+    # If I don't have ``executable'', don't complete to the _executable completer
+    zstyle ':completion:*:functions' ignored-patterns '_*'
+
+    # Match lowercase letters to uppercase letters and dashes to underscores (not
+    # vice-versa), and allow ".t<TAB>" to list all files containing the text ".t"
+    zstyle ':completion:*' matcher-list 'm:{a-z-}={A-Z_}' 'r:|.=** r:|=*'
+
+    # Try to use verbose listings when we have more information
+    zstyle ':completion:*' verbose true
+
+    # Allows /u/l/b<TAB> to menu complete as though you typed /u*/l*/b*<TAB>
+    zstyle ':completion:*:paths' expand suffix
+
+    # Menu complete on ambiguous paths
+    zstyle ':completion:*:paths' list-suffixes true
+
+    # Have '/home//<TAB>' list '/home/*', rather than '/home/*/*'
+    zstyle ':completion:*:paths' squeeze-slashes false
+
+    # Enter "menu selection" if there are at least 2 choices while completing
+    zstyle ':completion:*' menu select=2
+
+    # vi or vim will match first files that don't end in a backup extension,
+    # followed by files that do, followed last by files that are known to be binary
+    # types that should probably not be edited.
+    zstyle ':completion:*:*:(vi|vim):*:*' \
+    file-patterns '*~(*.o|*~|*.old|*.bak|*.pro|*.zwc|*.swp):regular-files' \
+    '(*~|*.bak|*.old):backup-files' \
+    '(*.o|*.pro|*.zwc|*.swp):hidden-files'
+
+    # Use colors in tab completion listings
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+    # Add a space after an expansion, so that 'ls $TERM' expands to 'ls xterm '
+    zstyle ':completion:*:expand:*' add-space true
+
+    # Tweaks to kill: list processes using the given command and show them in a menu
+    zstyle ':completion:*:*:kill:*' command 'ps -u$USER -o pid,%cpu,tty,cputime,cmd'
+    zstyle ':completion:*:*:kill:*' menu yes select
+    zstyle ':completion:*:*:kill:*' force-list always
+
+    # Use caching for commands that would like a cache.
+    zstyle ':completion:*' use-cache on
+    zstyle ':completion:*' cache-path ${ZDOTDIR}/.zcache
+
+    # Page long completion lists, using this prompt.
+    zstyle ':completion:*' list-prompt %S%L -- More --%s
+
+    # Show a warning when no completions were found
+    zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
+
