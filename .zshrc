@@ -33,6 +33,7 @@ HYPHEN_INSENSITIVE="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
+
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
@@ -181,4 +182,10 @@ bindkey "^[[B" history-beginning-search-forward-end
 
     # Show a warning when no completions were found
     zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
+
+    if ! (( ${+TMUX_PANE} ))  && (( ${+ZSH_TMUX_TERM} )); then                                             
+        echo "here" > ~/tmp/foobar
+        DISABLE_AUTO_TITLE="true"                                                            
+fi  
+
 
