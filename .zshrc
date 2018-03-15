@@ -99,7 +99,7 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias jump="ssh -t trampoline.net.isc.upenn.edu tmux -d attach"
+alias jump="ssh -t trampoline.net.isc.upenn.edu tmux attach -d"
 alias ki="kinit charlesr@UPENN.EDU"
 alias kd="kdestroy"
 alias kl="klist"
