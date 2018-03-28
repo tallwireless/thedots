@@ -14,7 +14,6 @@ host es
 
 host home
     hostname home.tallwireless.com
-    port 22222
 
-host vallen.tallwireless.com
-    AddressFamily inet
+host repo.tallwireless.com
+    port 2022
