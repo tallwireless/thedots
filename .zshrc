@@ -68,7 +68,7 @@ plugins=(
   cp
   systemd
   tmux
-  
+  docker 
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -104,6 +104,8 @@ alias ki="kinit charlesr@UPENN.EDU"
 alias kd="kdestroy"
 alias kl="klist"
 alias vi="vim"
+alias ip="ip -c"
+alias ip6="ip -6 -c"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
