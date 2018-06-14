@@ -15,5 +15,3 @@ host es
 host home
     hostname home.tallwireless.com
 
-host repo.tallwireless.com
-    port 2022
