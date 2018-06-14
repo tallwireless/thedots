@@ -3,11 +3,13 @@
 
 ServerAliveInterval 60
 VerifyHostKeyDNS=yes
-GSSAPIAuthentication yes
-GSSAPIDelegateCredentials yes
 #host trampoline* config* *.net.isc.upenn.edu
 #    ControlMaster auto
 #    ControlPath ~/.ssh/cm_socket/%r@%h:%p
+
+host *.upenn.edu
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials yes
 
 host es 
     hostname EISENSCHWEIN.router.upenn.edu
