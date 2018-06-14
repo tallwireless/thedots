@@ -10,3 +10,6 @@ bin
 oh-my-zsh .oh-my-zsh
 .zshrc .zshrc
 .zsh-update .zsh-update
+
+gpg.conf .gnupg/gpg.conf
+gpg-agent.conf .gnupg/gpg-agent.conf
