@@ -62,13 +62,13 @@ ZSH_CUSTOM=~/configs/custom-zsh
 plugins=(
   git
   zsh-syntax-highlighting
-  ssh-agent
   colored-man-pages
   common-aliases
   cp
   systemd
   tmux
   docker 
+  gpg-agent
 )
 
 source $ZSH/oh-my-zsh.sh
