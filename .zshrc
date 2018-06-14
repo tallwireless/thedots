@@ -60,6 +60,7 @@ ZSH_CUSTOM=~/configs/custom-zsh
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  gpg-agent
   git
   zsh-syntax-highlighting
   colored-man-pages
@@ -68,7 +69,6 @@ plugins=(
   systemd
   tmux
   docker 
-  gpg-agent
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -91,7 +91,9 @@ export EDITOR='vim'
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/id_rsa"
+#export SSH_KEY_PATH="~/.ssh/id_rsa"
+
+export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -112,7 +114,7 @@ alias ip6="ip -6 -c"
 
 
 # ssh-agent customizations
-zstyle :omz:plugins:ssh-agent agent-forwarding on
+#zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 setopt AutoList            2>/dev/null
 setopt NoBashAutoList      2>/dev/null
