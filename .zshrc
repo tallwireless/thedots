@@ -102,8 +102,6 @@ export EDITOR='vim'
 # ssh
 #export SSH_KEY_PATH="~/.ssh/id_rsa"
 
-export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
