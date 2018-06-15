@@ -3,7 +3,10 @@ export PATH=$HOME/local/bin:$HOME/bin:/usr/local/bin:$PATH
 export MANPATH=$HOME/local/usr/man:$MANPATH
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-source ~/.zshlocal
+
+if [ -f ~/.zshlocal ]; then
+    source ~/.zshlocal
+fi
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -70,7 +73,7 @@ plugins=(
   docker 
 )
 
-if [ $SSH_AUTH = "gpg" ]; then
+if  ! [ -z $SSH_AUTH ]  && [ $SSH_AUTH = "gpg" ]; then
     plugins+=(gpg-agent)
 else
     plugins+=(ssh-agent)
