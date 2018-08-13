@@ -74,11 +74,11 @@ plugins=(
   docker 
 )
 
-if  ! [ -z $SSH_AUTH ]  && [ $SSH_AUTH = "gpg" ]; then
-    plugins+=(gpg-agent)
-else
-    plugins+=(ssh-agent)
-fi
+#if  ! [ -z $SSH_AUTH ]  && [ $SSH_AUTH = "gpg" ]; then
+#    plugins+=(gpg-agent)
+#else
+#    plugins+=(ssh-agent)
+#fi
 
 source $ZSH/oh-my-zsh.sh
 
