@@ -162,3 +162,5 @@ set mouse-=a
 set modeline
 set modelines=2
 
+
+set listchars+=space:␣
