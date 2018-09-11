@@ -17,8 +17,8 @@ if s:TERMINAL
     set ttyscroll=3           " Prefer redraw to scrolling for more than 3 lines
     set timeoutlen=700        " Wait 700 ms before timing out a mapping
     set ttimeoutlen=100       " and only 100 ms before timing out on a keypress
-    set mouse=a               " Allow mouse use in all modes
-    set ttymouse=xterm2       " Terminal sends modern xterm mouse reporting.
+"   set mouse=a               " Allow mouse use in all modes
+"   set ttymouse=xterm2       " Terminal sends modern xterm mouse reporting.
 endif
 
 set virtualedit=block       " Let cursor go past the last char in block mode
