@@ -3,6 +3,7 @@
 
 ServerAliveInterval 60
 VerifyHostKeyDNS=yes
+
 #host trampoline* config* *.net.isc.upenn.edu
 #ControlMaster auto
 #ControlPath ~/.ssh/cm_socket/%r@%h:%p
@@ -10,7 +11,6 @@ VerifyHostKeyDNS=yes
 ForwardAgent yes
 
 Ciphers aes128-cbc,aes256-cbc,chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
-
 
 host *.upenn.edu
     GSSAPIAuthentication yes
