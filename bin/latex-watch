@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+if [ -z $1 ]
+then
+    echo "ERROR: I need a flie"
+    exit
+fi
+
+while true
+do 
+    inotifywait $1  
+    pdflatex $1 
+    pdflatex $1 
+done
