@@ -109,6 +109,8 @@ export EDITOR='vim'
 #
 # Example aliases
 alias jump="ssh -t trampoline.net.isc.upenn.edu tmux attach -d"
+alias tw-proxy="ssh -J spring.tallwireless.com"
+alias penn-proxy="ssh -J hussle.net.isc.upenn.edu."
 alias ki="kinit charlesr@UPENN.EDU"
 alias kd="kdestroy"
 alias kl="klist"
