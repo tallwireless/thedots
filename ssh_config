@@ -12,6 +12,9 @@ ForwardAgent yes
 
 Ciphers aes128-cbc,aes256-cbc,chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
 
+KexAlgorithms +diffie-hellman-group1-sha1
+HostKeyAlgorithms +ssh-dss
+
 host *.upenn.edu
     GSSAPIAuthentication yes
     GSSAPIDelegateCredentials yes
@@ -22,5 +25,12 @@ host es
 host home
     hostname home.tallwireless.com
 
-host *.wlan.upenn.edu
+host *.wlan.upenn.edu 10.50.80.*
+     GSSAPIAuthentication no
+     PreferredAuthentications keyboard-interactive,password
 
+host agg-sw agg-sw.noc.woprsummit.org
+ User admin
+
+host sw-* sw-*.noc.woprsummit.org
+ User wopr
