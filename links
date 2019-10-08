@@ -2,7 +2,6 @@
 .gvimrc
 .vimrc
 .xmodmaprc
-.zsh_local
 ssh_config .ssh/config
 .screenrc
 .tmux.conf
