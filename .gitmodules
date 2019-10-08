@@ -10,3 +10,6 @@
 [submodule "custom-zsh/themes/powerlevel10k"]
 	path = custom-zsh/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "tmux/tmux-powerline"]
+	path = tmux/tmux-powerline
+	url = https://github.com/erikw/tmux-powerline.git
