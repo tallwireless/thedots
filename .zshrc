@@ -1,5 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/local/bin:$HOME/bin:/usr/local/bin:$PATH
+# Install Ruby Gems to ~/gems
+#export GEM_HOME="$HOME/gems"
+#export PATH="$HOME/gems/bin:$PATH"
+#export PATH=$HOME/local/bin:$HOME/bin:/usr/local/bin:$PATH
 export MANPATH=$HOME/local/usr/man:$MANPATH
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -7,10 +10,13 @@ export ZSH=~/.oh-my-zsh
 if [ -f ~/.zshlocal ]; then
     source ~/.zshlocal
 fi
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="dst"
+if [[ $ZSH_THEME -eq "" ]]; then 
+    ZSH_THEME=powerlevel10k/powerlevel10k
+fi
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -65,6 +71,8 @@ ZSH_CUSTOM=~/configs/custom-zsh
 plugins=(
   gpg-agent
   git
+  git-extras
+  command-not-found
   zsh-syntax-highlighting
   colored-man-pages
   common-aliases
@@ -72,6 +80,9 @@ plugins=(
   systemd
   tmux
   docker 
+  pyenv
+  python
+  systemd
 )
 
 #if  ! [ -z $SSH_AUTH ]  && [ $SSH_AUTH = "gpg" ]; then
@@ -201,3 +212,5 @@ bindkey "^[[B" history-beginning-search-forward-end
 fi  
 
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
