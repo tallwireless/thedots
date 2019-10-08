@@ -1,13 +1,22 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/local/bin:$HOME/bin:/usr/local/bin:$PATH
+# Install Ruby Gems to ~/gems
+#export GEM_HOME="$HOME/gems"
+#export PATH="$HOME/gems/bin:$PATH"
+#export PATH=$HOME/local/bin:$HOME/bin:/usr/local/bin:$PATH
 export MANPATH=$HOME/local/usr/man:$MANPATH
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
+if [ -f ~/.zshlocal ]; then
+    source ~/.zshlocal
+fi
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="dst"
+if [[ $ZSH_THEME -eq "" ]]; then 
+    ZSH_THEME=powerlevel10k/powerlevel10k
+fi
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -37,7 +46,7 @@ HYPHEN_INSENSITIVE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -60,7 +69,10 @@ ZSH_CUSTOM=~/configs/custom-zsh
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  gpg-agent
   git
+  git-extras
+  command-not-found
   zsh-syntax-highlighting
   colored-man-pages
   common-aliases
@@ -68,8 +80,16 @@ plugins=(
   systemd
   tmux
   docker 
-  gpg-agent
+  pyenv
+  python
+  systemd
 )
+
+#if  ! [ -z $SSH_AUTH ]  && [ $SSH_AUTH = "gpg" ]; then
+#    plugins+=(gpg-agent)
+#else
+#    plugins+=(ssh-agent)
+#fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,7 +111,7 @@ export EDITOR='vim'
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/id_rsa"
+#export SSH_KEY_PATH="~/.ssh/id_rsa"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -100,6 +120,8 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 #
 # Example aliases
 alias jump="ssh -t trampoline.net.isc.upenn.edu tmux attach -d"
+alias tw-proxy="ssh -J spring.tallwireless.com"
+alias penn-proxy="ssh -J hussle.net.isc.upenn.edu."
 alias ki="kinit charlesr@UPENN.EDU"
 alias kd="kdestroy"
 alias kl="klist"
@@ -112,7 +134,7 @@ alias ip6="ip -6 -c"
 
 
 # ssh-agent customizations
-zstyle :omz:plugins:ssh-agent agent-forwarding on
+#zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 setopt AutoList            2>/dev/null
 setopt NoBashAutoList      2>/dev/null
@@ -190,3 +212,5 @@ bindkey "^[[B" history-beginning-search-forward-end
 fi  
 
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh

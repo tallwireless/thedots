@@ -3,9 +3,17 @@
 
 ServerAliveInterval 60
 VerifyHostKeyDNS=yes
+
 #host trampoline* config* *.net.isc.upenn.edu
-#    ControlMaster auto
-#    ControlPath ~/.ssh/cm_socket/%r@%h:%p
+#ControlMaster auto
+#ControlPath ~/.ssh/cm_socket/%r@%h:%p
+
+ForwardAgent yes
+
+Ciphers aes128-cbc,aes256-cbc,chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+
+KexAlgorithms +diffie-hellman-group1-sha1
+HostKeyAlgorithms +ssh-dss
 
 host *.upenn.edu
     GSSAPIAuthentication yes
@@ -17,5 +25,6 @@ host es
 host home
     hostname home.tallwireless.com
 
-host fronter.tallwireless.com
-   HostName 2604:bf00:561:2082::4a11:ee
+host *.wlan.upenn.edu 10.50.80.*
+     GSSAPIAuthentication no
+     PreferredAuthentications keyboard-interactive,password

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+EMAIL="charlesr@tallwireless.com"
+
+if [ ! -z $1 ]; then
+    EMAIL=$1
+fi
+
+echo "Cleaning up private keys for $EMAIL"
+
+echo -n "Killall gpg-agent and ssh-agent processess..."
+
+for i in `ps uxww | egrep "ssh-agent|gpg-agent" | awk '{print $1}'`; do
+    kill -9 $i
+done
+echo "done"
+
+echo -n "Removing private keys..."
+for keystub in $(gpg --with-keygrip --list-secret-keys $EMAIL | grep Keygrip | awk '{print $3}'); do 
+    rm $HOME/.gnupg/private-keys-v1.d/$keystub.key; 
+done
+echo "done"
+
+echo -n "starting GPG Agent..."
+gpgconf --launch gpg-agent
+echo "done"
+
+
