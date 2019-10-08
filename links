@@ -10,6 +10,7 @@ bin
 oh-my-zsh .oh-my-zsh
 .zshrc .zshrc
 .zsh-update .zsh-update
+.tmux-powerlinerc
 
 gpg.conf .gnupg/gpg.conf
 gpg-agent.conf .gnupg/gpg-agent.conf
