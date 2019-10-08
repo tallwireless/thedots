@@ -3,7 +3,6 @@
 " Borrowed some stuff from Matt Wozniski (mjw@drexel.edu)
 
 "if version < 700
-    set noloadplugins
 "endif
 
 " In a terminal unless we're in a gui
@@ -22,7 +21,7 @@ if s:TERMINAL
 endif
 
 set virtualedit=block       " Let cursor go past the last char in block mode
-set path=**,/usr/local/include,/usr/include
+"set path=**,/usr/local/include,/usr/include
 
 """ Searching and Patterns
 set incsearch            " Incrementally search on /, don't wait for return
@@ -144,23 +143,11 @@ function! EatChar(pat)
     return (c =~ a:pat) ? '' : c
 endfunc
 
-if has("autocmd")
-      au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-              \| exe "normal g'\"" | endif
-        endif
-
 set textwidth=78
 set autoindent
-augroup mail
-  au! BufRead,BufNewFile *.mail   setfiletype mail
-augroup END
 
-color torte
+colorscheme default
  
-set modeline
-set modelines=2
-
-
 set listchars+=space:␣
 
 
