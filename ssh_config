@@ -16,3 +16,6 @@ host es
 
 host home
     hostname home.tallwireless.com
+
+host fronter.tallwireless.com
+   HostName 2604:bf00:561:2082::4a11:ee
