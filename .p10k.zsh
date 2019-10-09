@@ -12,11 +12,6 @@
 #
 #   for i in {0..255}; do print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'}; done
 
-#COLORS
-#
-PRIMARY_BACKGROUND=59 # Gray
-PRIMARY_FORGROUND= 236
-
 
 
 # Temporarily change options.
