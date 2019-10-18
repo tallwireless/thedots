@@ -50,6 +50,7 @@
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
       # =========================[ Line #1 ]=========================
+      default_ip               # example user-defined segment (see prompt_example function below):
       status                  # exit code of the last command
       command_execution_time  # duration of the last command
       background_jobs         # presence of background jobs
@@ -77,11 +78,11 @@
        battery               # internal battery
       # =========================[ Line #2 ]=========================
       newline
-      #public_ip             # public IP address
+      # public_ip             # public IP address
       # proxy                 # system-wide http/https/ftp proxy
-      time                    # current time
       # load                  # CPU load
-      # example               # example user-defined segment (see prompt_example function below)
+      time                    # current time
+       #example               # example user-defined segment (see prompt_example function below)
   )
 
   # To disable default icons for all segments, set POWERLEVEL9K_VISUAL_IDENTIFIER_EXPANSION=''.
@@ -779,7 +780,7 @@
   typeset -g POWERLEVEL9K_VPN_IP_CONTENT_EXPANSION=
   # Regular expression for the VPN network interface. Run ifconfig while on VPN to see the
   # name of the interface.
-  typeset -g POWERLEVEL9K_VPN_IP_INTERFACE='(wg|(.*tun))[0-9]*'
+  typeset -g POWERLEVEL9K_VPN_IP_INTERFACE='.*wlp4s0.*'
   # Custom icon.
   # typeset -g POWERLEVEL9K_VPN_IP_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -823,6 +824,14 @@
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
+  }
+
+  function prompt_default_ip() {
+      /bin/ip route get 8.8.8.8/32 2> /dev/null >/dev/null
+      if [[  $? == 0 ]] ; then
+          typeset -g IP_ADDRESS=`/bin/ip route get 8.8.8.8/32 | grep dev | sed 's/.*src \(.*\)uid.*/\1/g'`
+      fi
+      p10k segment -f 232 -b 106 -t "${IP_ADDRESS}"
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
