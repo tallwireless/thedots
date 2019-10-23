@@ -146,7 +146,7 @@ endfunc
 set textwidth=78
 set autoindent
 
-colorscheme default
+colorscheme ron
  
 set listchars+=space:␣
 
