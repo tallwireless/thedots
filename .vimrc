@@ -154,3 +154,7 @@ set listchars+=space:␣
 let g:python_highlight_all = 1
 
 
+" IndentLine Configs
+nnoremap <F4> :IndentLinesToggle<CR>
+let g:indentLine_enabled = 0
+let g:indentLine_color_term = 237
