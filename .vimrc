@@ -118,6 +118,7 @@ set clipboard=unnamed
 
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+nnoremap <F3> :set invlist list?<CR>
 set showmode
 
 """ Functions
@@ -146,8 +147,10 @@ endfunc
 set textwidth=78
 set autoindent
 
-colorscheme ron
+colorscheme default
  
 set listchars+=space:␣
+
+let g:python_highlight_all = 1
 
 
