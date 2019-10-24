@@ -16,3 +16,6 @@
 [submodule "vim/pack/default/start/vim-polyglot"]
 	path = vim/pack/default/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
+[submodule "vim/pack/vendor/start/indentLine"]
+	path = vim/pack/vendor/start/indentLine
+	url = https://github.com/Yggdroot/indentLine.git
