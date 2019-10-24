@@ -79,7 +79,6 @@ plugins=(
   common-aliases
   cp
   systemd
-  tmux
   docker 
   pyenv
   python
