@@ -1,2 +1,4 @@
 .zsh-update
 .zsh_local
+
+*.sw*
