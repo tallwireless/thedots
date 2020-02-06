@@ -44,7 +44,7 @@ HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="false"
@@ -128,6 +128,7 @@ alias kl="klist"
 alias vi="vim"
 alias ip="ip -c"
 alias ip6="ip -6 -c"
+alias flush-dns="sudo systemd-resolve --flush-caches"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
