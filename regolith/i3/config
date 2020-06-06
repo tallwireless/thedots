@@ -301,7 +301,7 @@ bar {
   font pango:Inconsolata 13
   separator_symbol " "
   #status_command i3xrocks -c $i3xrocks_config
-  status_command /home/charlesr/code/bumblebee-status/bumblebee-status -m amixer wireless battery date time -p time.format="%H:%M" -p date.format="%Y/%m/%d" -p amixer.wheel-up="amixer -D pulse sset Master 10%+" -p amixer.wheel-down="amixer -D pulse sset Master 10%-" -p amixer.middle-click="amixer -D pulse sset master toggle" -t powerline
+  status_command /home/charlesr/code/bumblebee-status/bumblebee-status -m amixer nic battery date time -p nic.format="{ssid}" -p nic.exclude="lo,enp,gpd,docker,br,birbr,veth,vboxnet" -p nic.include="wlp4s0" -p time.format="%H:%M" -p date.format="%Y/%m/%d" -p amixer.wheel-up="amixer -D pulse sset Master 10%+" -p amixer.wheel-down="amixer -D pulse sset Master 10%-" -p amixer.middle-click="amixer -D pulse sset master toggle" -t powerline
   position bottom
   strip_workspace_numbers yes
 
@@ -319,10 +319,10 @@ bar {
 }
 bar {
   output HDMI-1
-  font pango:Inconsolata 11
+  font pango:Meslo LG M for Powerline 13
   separator_symbol " "
   #status_command i3xrocks -c $i3xrocks_config
-  status_command /home/charlesr/code/bumblebee-status/bumblebee-status -m amixer wireless battery date time -p time.format="%H:%M" -p date.format="%Y/%m/%d" -p amixer.wheel-up="amixer -D pulse sset Master 10%+" -p amixer.wheel-down="amixer -D pulse sset Master 10%-" -p amixer.middle-click="amixer -D pulse sset master toggle" -t powerline
+  status_command /home/charlesr/code/bumblebee-status/bumblebee-status -m amixer nic battery date time -t powerline
   position bottom
   strip_workspace_numbers yes
 
