@@ -22,8 +22,7 @@ XTerm*scrollTtyOutput:  false
 ! Urxvt
 URxvt*background:       Black
 URxvt*foreground:       White
-URxvt*italicFont:
-URxvt*boldItalicFont:
+URxvt.font: xft: MesloLGS Nerd Font Mono:size=15
 
 URxvt*jumpScroll: true
 URxvt*urgentOnBell: true
@@ -33,32 +32,46 @@ URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: false
 URxvt*scrollTtyKeypress: true
 
+*termName: xterm-256color
+*mouseWheelScrollPage: false
+*cursorBlink: true
+*cursorColor: #EA2B03
+
 URxvt.perl-ext-common : default,matcher
-URxvt.urlLauncher     : /usr/bin/chromium-bin
+URxvt.urlLauncher     : /usr/bin/brave-browser
 URxvt.matcher.button  : 1 
 
-! black
-URxvt.color0  : #202020
-URxvt.color8  : #202020
-! red
-URxvt.color1  : #bb4444
-URxvt.color9  : #bb4444
-! green
-URxvt.color2  : #44bb44
-URxvt.color10 : #44bb44
-! yellow
-URxvt.color3  : #bbbb44
-URxvt.color11 : #bbbb44
-! blue
-URxvt.color4  : #4444aa
-URxvt.color12 : #4444aa
-! magenta
-URxvt.color5  : #bb44bb
-URxvt.color13 : #bb44bb
-! cyan
-URxvt.color6  : #44bbbb
-URxvt.color14 : #44bbbb
-! white
-URxvt.color7  : #999999
-URxvt.color15 : #999999
+URxvt.iso14755: true
+URxvt.iso14755_52: true
 
+! black
+*.color0: #263640
+*.color8: #4a697d
+
+! red
+*.color1: #d12f2c
+*.color9: #fa3935
+
+! green
+*.color2: #819400
+*.color10: #a4bd00
+
+! yellow
+*.color3: #b08500
+*.color11: #d9a400
+
+! blue
+*.color4: #2587cc
+*.color12: #2ca2f5
+
+! magenta
+*.color5: #696ebf
+*.color13: #8086e8
+
+! cyan
+*.color6: #289c93
+*.color14: #33c5ba
+
+! white
+*.color7: #bfbaac
+*.color15: #fdf6e3
