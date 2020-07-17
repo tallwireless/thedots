@@ -1,0 +1,58 @@
+#!/bin/bash
+set -e
+set -u
+set -o pipefail
+
+WHOAMI=$0
+WHOAMI=`awk -F'/' '{print $NF}' <<< $WHOAMI`
+
+function print_help() {
+    echo "Sync files to and fro!"
+    echo
+    echo "$WHOAMI [-hdp] <location>"
+    echo
+    echo "location      Directory for both sides"
+    echo "-h            This message"
+    echo "-d            pass the --delete to rsync"
+    echo "-p            proxy the connection via spring"
+}
+DELETE=""
+PROXY=""
+while getopts "hpd" OPT; do
+    case "$OPT" in
+        h)
+            print_help
+            exit
+            ;;
+        d)
+            DELETE="--delete"
+            ;;
+        p)
+            PROXY="-e 'ssh -J spring.tallwireless.com'"
+            ;;
+    esac
+done
+
+REMOTE=`echo ${WHOAMI} | cut -d- -f 2`
+DIRECTION=`echo ${WHOAMI} | cut -d- -f1`
+
+if [[ $WHOAMI == *"to"* ]]; then
+    TO=${REMOTE}.tallwireless.com:$PWD
+    FROM=$PWD
+else
+    FROM=${REMOTE}.tallwireless.com:$PWD
+    TO=$PWD
+fi
+
+COMMAND="rsync ${DELETE} ${PROXY} -avv ${FROM} ${TO}"
+
+echo -ne "Starting sync ${PWD} ${DIRECTION} ${REMOTE}..."
+
+$COMMAND >> /dev/null
+
+if [[ $? ]]; then
+    echo "Complete."
+else
+    echo "ERROR!"
+fi
+
