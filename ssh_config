@@ -18,3 +18,5 @@ HostKeyAlgorithms +ssh-dss
 host home
     hostname home.tallwireless.com
 
+host *.scnet.net
+    username admin.ccr
