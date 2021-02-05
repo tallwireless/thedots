@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for i in {1..3}; do 
+    sudo ddcutil --display $i setvcp 10 $1 &
+done
