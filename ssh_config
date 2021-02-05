@@ -20,3 +20,6 @@ host home
 
 host *.scnet.net
     User admin.ccr
+
+host cr1* cr2* ar* agg*
+    User admin.ccr
