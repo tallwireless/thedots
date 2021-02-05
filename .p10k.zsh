@@ -418,7 +418,7 @@
   functions -M my_git_formatter 2>/dev/null
 
   # Disable the default Git status formatting.
-  typeset -g POWERLEVEL9K_VCS_DISABLE_GITSTATUS_FORMATTING=true
+  typeset -g POWERLEVEL9K_VCS_DISABLE_GITSTATUS_FORMATTING=false
   # Install our own Git status formatter.
   typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${$((my_git_formatter(1)))+${my_git_format}}'
   typeset -g POWERLEVEL9K_VCS_LOADING_CONTENT_EXPANSION='${$((my_git_formatter(0)))+${my_git_format}}'
@@ -426,7 +426,7 @@
   typeset -g POWERLEVEL9K_VCS_{STAGED,UNSTAGED,UNTRACKED,CONFLICTED,COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=-1
 
   # Icon color.
-  typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_COLOR=46
+  typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_COLOR=47
   typeset -g POWERLEVEL9K_VCS_LOADING_VISUAL_IDENTIFIER_COLOR=244
   # Custom icon.
   # typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_EXPANSION='⭐'
@@ -442,7 +442,7 @@
   # Powerlevel10k has to fall back to using vcs_info.
   typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=46
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=46
-  typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=172
+  typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=166
 
   ##########################[ status: exit code of the last command ]###########################
   # Enable OK_PIPE, ERROR_PIPE and ERROR_SIGNAL status states to allow us to enable, disable and
@@ -541,9 +541,10 @@
 
   ##################################[ context: user@hostname ]##################################
   # Default context color.
-  typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=21
+  typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=232
+  typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND=202
   # Default context format: %n is username, %m is hostname.
-  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m'
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%m'
 
   # Context color when running with privileges.
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=196
@@ -808,7 +809,7 @@
   # Current time color.
   typeset -g POWERLEVEL9K_TIME_FOREGROUND=232
   # Format for the current time: 09:51:02. See `man 3 strftime`.
-  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
+  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S %Z}'
   # If set to true, time will update when you hit enter. This way prompts for the past
   # commands will contain the start times of their commands as opposed to the default
   # behavior where they contain the end times of their preceding commands.
@@ -828,11 +829,13 @@
   }
 
   function prompt_default_ip() {
-      /bin/ip route get 8.8.8.8/32 2> /dev/null >/dev/null
-      if [[  $? == 0 ]] ; then
-          typeset -g IP_ADDRESS=`/bin/ip route get 8.8.8.8/32 | grep dev | sed 's/.*src \(.*\)uid.*/\1/g'`
-      fi
-      p10k segment -f 232 -b 106 -t "${IP_ADDRESS}"
+      if [[ -f /bin/ip ]]; then
+          /bin/ip route get 8.8.8.8/32 2> /dev/null >/dev/null
+          if [[  $? == 0 ]] ; then
+              typeset -g IP_ADDRESS=`/bin/ip route get 8.8.8.8/32 | grep dev | sed 's/.*src \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*/\1/g'`
+          fi
+          p10k segment -f 232 -b 106 -t "SRC IP:${IP_ADDRESS}"
+    fi
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
