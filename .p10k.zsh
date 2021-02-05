@@ -829,11 +829,13 @@
   }
 
   function prompt_default_ip() {
-      /bin/ip route get 8.8.8.8/32 2> /dev/null >/dev/null
-      if [[  $? == 0 ]] ; then
-          typeset -g IP_ADDRESS=`/bin/ip route get 8.8.8.8/32 | grep dev | sed 's/.*src \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*/\1/g'`
-      fi
-      p10k segment -f 232 -b 106 -t "SRC IP:${IP_ADDRESS}"
+      if [[ -f /bin/ip ]]; then
+          /bin/ip route get 8.8.8.8/32 2> /dev/null >/dev/null
+          if [[  $? == 0 ]] ; then
+              typeset -g IP_ADDRESS=`/bin/ip route get 8.8.8.8/32 | grep dev | sed 's/.*src \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*/\1/g'`
+          fi
+          p10k segment -f 232 -b 106 -t "SRC IP:${IP_ADDRESS}"
+    fi
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
