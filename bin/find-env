@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+#Let's find the python activate script!
+
+ACTIVATE='/bin/activate'
+
+POSS_LOCS=(.env .dev-env env dev-env)
+
+for LOCATION in ${POSS_LOCS[@]}; do
+    if [[ -f ${LOCATION}/${ACTIVATE} ]]; then
+        source "${LOCATION}${ACTIVATE}"
+        exec /bin/zsh
+    fi
+done
