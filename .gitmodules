@@ -16,3 +16,6 @@
 [submodule "vim/pack/vendor/start/indentLine"]
 	path = vim/pack/vendor/start/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule "tmux/tmux-powerline"]
+	path = tmux/tmux-powerline
+    url = git@github.com:tallwireless/tmux-powerline.git
