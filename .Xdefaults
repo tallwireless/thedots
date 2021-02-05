@@ -22,7 +22,7 @@ XTerm*scrollTtyOutput:  false
 ! Urxvt
 URxvt*background:       Black
 URxvt*foreground:       White
-URxvt.font: xft: MesloLGS Nerd Font Mono:size=15
+URxvt.font: xft: MesloLGS Nerd Font Mono:size=11
 
 URxvt*jumpScroll: true
 URxvt*urgentOnBell: true
