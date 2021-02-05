@@ -541,9 +541,10 @@
 
   ##################################[ context: user@hostname ]##################################
   # Default context color.
-  typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=21
+  typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=232
+  typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND=202
   # Default context format: %n is username, %m is hostname.
-  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m'
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%m'
 
   # Context color when running with privileges.
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=196
@@ -808,7 +809,7 @@
   # Current time color.
   typeset -g POWERLEVEL9K_TIME_FOREGROUND=232
   # Format for the current time: 09:51:02. See `man 3 strftime`.
-  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
+  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S %Z}'
   # If set to true, time will update when you hit enter. This way prompts for the past
   # commands will contain the start times of their commands as opposed to the default
   # behavior where they contain the end times of their preceding commands.
@@ -830,9 +831,9 @@
   function prompt_default_ip() {
       /bin/ip route get 8.8.8.8/32 2> /dev/null >/dev/null
       if [[  $? == 0 ]] ; then
-          typeset -g IP_ADDRESS=`/bin/ip route get 8.8.8.8/32 | grep dev | sed 's/.*src \(.*\)uid.*/\1/g'`
+          typeset -g IP_ADDRESS=`/bin/ip route get 8.8.8.8/32 | grep dev | sed 's/.*src \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*/\1/g'`
       fi
-      p10k segment -f 232 -b 106 -t "${IP_ADDRESS}"
+      p10k segment -f 232 -b 106 -t "SRC IP:${IP_ADDRESS}"
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
