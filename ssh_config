@@ -23,3 +23,7 @@ host *.scnet.net
 
 host cr1* cr2* ar* agg*
     User admin.ccr
+
+host blackhole1.ord6 blackhole1.ord6.scnet.net
+    hostname 204.93.204.242
+    User admin.ccr
