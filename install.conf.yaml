@@ -29,6 +29,12 @@
    # bins
    ~/bin: bin
 
+   ~/.config/:
+     glob: true
+     path: config/*
+     if: '[ `uname` = Linux ]'
+     force: true
+
 - create:
   - ~/tmp
 
