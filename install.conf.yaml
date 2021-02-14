@@ -40,6 +40,9 @@
      if: '[ `uname` = Linux ]'
      force: true
 
+   ~/.gnupg/gpg.conf: gpg/gpg.conf
+   ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
+
 - create:
   - ~/tmp
   - ~/code
