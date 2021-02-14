@@ -29,6 +29,11 @@
    # bins
    ~/bin: bin
 
+   # ssh
+   ~/.ssh/config:
+     create: true
+     path: ssh/config
+
    ~/.config/:
      glob: true
      path: config/*
@@ -39,3 +44,8 @@
   - ~/tmp
   - ~/code
 
+- shell:
+  - description: Fix ~/.ssh permissions
+    command: chmod 700 ~/.ssh
+  - description: Fix ~/.ssh/config permissions
+    command: chmod 600 ~/.ssh/config
