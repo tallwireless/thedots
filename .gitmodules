@@ -10,9 +10,6 @@
 [submodule "custom-zsh/themes/powerlevel10k"]
 	path = custom-zsh/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
-[submodule "tmux/tmux-powerline"]
-	path = tmux/tmux-powerline
-	url = https://github.com/erikw/tmux-powerline.git
 [submodule "vim/pack/default/start/vim-polyglot"]
 	path = vim/pack/default/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
@@ -22,3 +19,7 @@
 [submodule "vim/pack/typescript/start/typescript-vim"]
 	path = vim/pack/typescript/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "tmux/tmux-powerline"]
+	path = tmux/tmux-powerline
+    url = git@github.com:tallwireless/tmux-powerline.git
+	branch = master

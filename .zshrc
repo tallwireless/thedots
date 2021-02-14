@@ -14,10 +14,7 @@ fi
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-    ZSH_THEME=dst
-if [[ "`hostname`" == "hyde" ]]; then
-    ZSH_THEME=powerlevel10k/powerlevel10k
-fi
+ZSH_THEME=powerlevel10k/powerlevel10k
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -63,7 +60,7 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=~/configs/custom-zsh
+ZSH_CUSTOM=~/thedots/custom-zsh
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -126,10 +123,12 @@ alias ki="kinit charlesr@UPENN.EDU"
 alias kd="kdestroy"
 alias kl="klist"
 alias vi="vim"
-alias ip="ip -c"
-alias ip6="ip -6 -c"
+alias ip="ip -br -c"
+alias ip6="ip -6 -br -c"
 alias flush-dns="sudo systemd-resolve --flush-caches"
+alias nightynight="sudo systemctl hibernate"
 # alias zshconfig="mate ~/.zshrc"
+
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 

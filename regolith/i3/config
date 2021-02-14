@@ -1,4 +1,5 @@
 ## i3 config file (v4) for Regolith Desktop Environment
+#
 ##
 ## Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
@@ -6,6 +7,19 @@
 ## Alt key is Mod1, and Windows key is Mod4
 set $mod Mod4
 set $alt Mod1
+
+# Let's float some windows!
+#
+for_window [class="Thunderbird" instance="Msgcompose"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [class=".*"] border pixel 4
+
+
+# Let's see how much this pisses me off
+focus_on_window_activation focus
+
+show_marks yes
+
 #
 ## i3xrocks config file
 set $i3xrocks_config ~/.i3/i3xrocks
@@ -23,13 +37,14 @@ set $terminal_path /usr/bin/terminator
 workspace_auto_back_and_forth yes
 popup_during_fullscreen smart
 focus_follows_mouse yes
+
 #
 #assign [class="Spotify"] workspace number 9
 #
 ## Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 #
-hide_edge_borders smart
+hide_edge_borders none
 
 ## start a terminal
 bindsym $mod+Return exec $terminal_path
@@ -109,15 +124,15 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
-bindsym $mod+Ctrl+1 workspace number 11
-bindsym $mod+Ctrl+2 workspace number 12
-bindsym $mod+Ctrl+3 workspace number 13
-bindsym $mod+Ctrl+4 workspace number 14
-bindsym $mod+Ctrl+5 workspace number 15
-bindsym $mod+Ctrl+6 workspace number 16
-bindsym $mod+Ctrl+7 workspace number 17
-bindsym $mod+Ctrl+8 workspace number 18
-bindsym $mod+Ctrl+9 workspace number 19
+bindsym $mod+F1 workspace number 11
+bindsym $mod+F2 workspace number 12
+bindsym $mod+F3 workspace number 13
+bindsym $mod+F4 workspace number 14
+bindsym $mod+F5 workspace number 15
+bindsym $mod+F6 workspace number 16
+bindsym $mod+F7 workspace number 17
+bindsym $mod+F8 workspace number 18
+bindsym $mod+F9 workspace number 19
 #
 ## cycle across workspaces
 bindsym $mod+Tab workspace next
@@ -134,15 +149,15 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
-bindsym $mod+Shift+Ctrl+1 move container to workspace number 11
-bindsym $mod+Shift+Ctrl+2 move container to workspace number 12
-bindsym $mod+Shift+Ctrl+3 move container to workspace number 13
-bindsym $mod+Shift+Ctrl+4 move container to workspace number 14
-bindsym $mod+Shift+Ctrl+5 move container to workspace number 15
-bindsym $mod+Shift+Ctrl+6 move container to workspace number 16
-bindsym $mod+Shift+Ctrl+7 move container to workspace number 17
-bindsym $mod+Shift+Ctrl+8 move container to workspace number 18
-bindsym $mod+Shift+Ctrl+9 move container to workspace number 19
+bindsym $mod+ShiftF1 move container to workspace number 11
+bindsym $mod+ShiftF2 move container to workspace number 12
+bindsym $mod+ShiftF3 move container to workspace number 13
+bindsym $mod+ShiftF4 move container to workspace number 14
+bindsym $mod+ShiftF5 move container to workspace number 15
+bindsym $mod+ShiftF6 move container to workspace number 16
+bindsym $mod+ShiftF7 move container to workspace number 17
+bindsym $mod+ShiftF8 move container to workspace number 18
+bindsym $mod+ShiftF9 move container to workspace number 19
 
 # move focused container to workspace, move to workspace
 bindsym $mod+$alt+1 move container to workspace number 1; workspace number 1  
@@ -172,16 +187,16 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 ## Logout of session
-bindsym $mod+Shift+e exec /usr/bin/gnome-session-quit --logout
+#bindsym $mod+Shift+e exec /usr/bin/gnome-session-quit --logout
 #
 # Reboot computer
-bindsym $mod+Shift+b exec /usr/bin/gnome-session-quit --reboot
+#bindsym $mod+Shift+b exec /usr/bin/gnome-session-quit --reboot
 #
 ## Power off computer
-bindsym $mod+Shift+p exec /usr/bin/gnome-session-quit --power-off
+#bindsym $mod+Shift+p exec /usr/bin/gnome-session-quit --power-off
 
 # lock the screen
-bindsym $mod+Escape exec gnome-screensaver-command --lock
+bindsym $mod+ctrl+l exec gnome-screensaver-command --lock
 
 ## put the system to sleep
 bindsym $mod+Shift+s exec systemctl suspend
@@ -225,8 +240,6 @@ mode "Resize Mode" {
 bindsym $mod+r mode "Resize Mode"
 #
 ## Disable titlebar
-new_window pixel 1
-new_float pixel 1
 #
 ## Gaps (i3-gaps)
 gaps inner 10
@@ -269,9 +282,10 @@ client.urgent           $urgent.color.border               $urgent.color.backgro
 #
 ## Enable popup during fullscreen
 popup_during_fullscreen smart
-#
-# window focus follows your mouse movements as the mouse crosses window borders
-focus_follows_mouse no
+
+# Window Borders
+default_border pixel
+default_floating_border pixel
 
 set_from_resource $i3-wm.bar.background.color i3-wm.bar.background.color "#002b36"
 set_from_resource $i3-wm.bar.statusline.color i3-wm.bar.statusline.color "#93a1a1"
@@ -297,53 +311,10 @@ set_from_resource $i3-wm.bar.font i3-wm.bar.font "Meslo LG M DZ Regular Nerd Fon
 #
 ## Configure the bar
 bar {
-  output eDP-1
-  font pango:Inconsolata 13
-  separator_symbol " "
-  #status_command i3xrocks -c $i3xrocks_config
-  status_command /home/charlesr/code/bumblebee-status/bumblebee-status -m amixer nic battery date time -p nic.format="{ssid}" -p nic.exclude="lo,enp,gpd,docker,br,birbr,veth,vboxnet" -p nic.include="wlp4s0" -p time.format="%H:%M" -p date.format="%Y/%m/%d" -p amixer.wheel-up="amixer -D pulse sset Master 10%+" -p amixer.wheel-down="amixer -D pulse sset Master 10%-" -p amixer.middle-click="amixer -D pulse sset master toggle" -t powerline
-  position bottom
-  strip_workspace_numbers yes
-
-#  colors {
-#      background $i3-wm.bar.background.color
-#      statusline $i3-wm.bar.statusline.color
-#      separator  $i3-wm.bar.separator.color
-##
-###                        BORDER  BACKGROUND TEXT
-#      focused_workspace  $i3-wm.bar.workspace.focused.border.color      $i3-wm.bar.workspace.focused.background.color   $i3-wm.bar.workspace.focused.text.color
-#      active_workspace   $i3-wm.bar.workspace.active.border.color       $i3-wm.bar.workspace.active.background.color    $i3-wm.bar.workspace.active.text.color
-#      inactive_workspace $i3-wm.bar.workspace.inactive.border.color     $i3-wm.bar.workspace.inactive.background.color  $i3-wm.bar.workspace.inactive.text.color
-#      urgent_workspace   $i3-wm.bar.workspace.urgent.border.color       $i3-wm.bar.workspace.urgent.background.color    $i3-wm.bar.workspace.urgent.text.color
-#  }
-}
-bar {
-  output HDMI-1
-  font pango:Meslo LG M for Powerline 13
-  separator_symbol " "
-  #status_command i3xrocks -c $i3xrocks_config
-  status_command /home/charlesr/code/bumblebee-status/bumblebee-status -m amixer nic battery date time -t powerline
-  position bottom
-  strip_workspace_numbers yes
-
-#  colors {
-#      background $i3-wm.bar.background.color
-#      statusline $i3-wm.bar.statusline.color
-#      separator  $i3-wm.bar.separator.color
-##
-###                        BORDER  BACKGROUND TEXT
-#      focused_workspace  $i3-wm.bar.workspace.focused.border.color      $i3-wm.bar.workspace.focused.background.color   $i3-wm.bar.workspace.focused.text.color
-#      active_workspace   $i3-wm.bar.workspace.active.border.color       $i3-wm.bar.workspace.active.background.color    $i3-wm.bar.workspace.active.text.color
-#      inactive_workspace $i3-wm.bar.workspace.inactive.border.color     $i3-wm.bar.workspace.inactive.background.color  $i3-wm.bar.workspace.inactive.text.color
-#      urgent_workspace   $i3-wm.bar.workspace.urgent.border.color       $i3-wm.bar.workspace.urgent.background.color    $i3-wm.bar.workspace.urgent.text.color
-#  }
-}
-bar {
-  output DP-2
   font pango:Inconsolata 11
   separator_symbol " "
   #status_command i3xrocks -c $i3xrocks_config
-  status_command /home/charlesr/code/bumblebee-status/bumblebee-status -m date time -p time.format="%H:%M" -p date.format="%Y/%m/%d" -p amixer.wheel-up="amixer -D pulse sset Master 10%+" -p amixer.wheel-down="amixer -D pulse sset Master 10%-" -p amixer.middle-click="amixer -D pulse sset master toggle" -t powerline
+  status_command /home/charlesr/code/bumblebee-status/bumblebee-status -m amixer date time -p time.format="%H:%M" -p date.format="%Y/%m/%d" -p amixer.wheel-up="amixer -D pulse sset Master 10%+" -p amixer.wheel-down="amixer -D pulse sset Master 10%-" -p amixer.middle-click="amixer -D pulse sset master toggle" -t powerline
   position bottom
   strip_workspace_numbers yes
 
@@ -364,7 +335,7 @@ bar {
 ## Run programs when i3 starts
 #
 ## Start the composite manager
-exec --no-startup-id compton -f --config $compton_config
+#exec --no-startup-id compton -f --config $compton_config
 #
 # Launch the shortcut Conky window on first login
 exec --no-startup-id /usr/bin/regolith-ftue

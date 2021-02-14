@@ -15,16 +15,15 @@ Ciphers aes128-cbc,aes256-cbc,chacha20-poly1305@openssh.com,aes128-ctr,aes192-ct
 KexAlgorithms +diffie-hellman-group1-sha1
 HostKeyAlgorithms +ssh-dss
 
-host *.upenn.edu
-    GSSAPIAuthentication yes
-    GSSAPIDelegateCredentials yes
-
-host es 
-    hostname EISENSCHWEIN.router.upenn.edu
-
 host home
     hostname home.tallwireless.com
 
-host *.wlan.upenn.edu 10.50.80.*
-     GSSAPIAuthentication no
-     PreferredAuthentications keyboard-interactive,password
+host *.scnet.net
+    User admin.ccr
+
+host cr1* cr2* ar* agg*
+    User admin.ccr
+
+host blackhole1.ord6 blackhole1.ord6.scnet.net
+    hostname 204.93.204.242
+    User admin.ccr
