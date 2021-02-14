@@ -1,12 +1,12 @@
 ---
  
 - defaults:
-    links:
+    link:
       relink: true
+      force: true
 
 - clean: ['~']
 
- 
 - link:
    # The ZSH stuff
    ~/.oh-my-zsh: oh-my-zsh
