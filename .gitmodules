@@ -23,3 +23,7 @@
 	path = tmux/tmux-powerline
     url = git@github.com:tallwireless/tmux-powerline.git
 	branch = master
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+	ignore = dirty
