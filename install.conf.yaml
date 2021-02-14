@@ -1,0 +1,34 @@
+---
+ 
+- defaults:
+    links:
+      relink: true
+
+- clean: ['~']
+
+ 
+- link:
+   # The ZSH stuff
+   ~/.oh-my-zsh: oh-my-zsh
+   ~/.zshrc: zsh/zshrc
+   ~/.p10k.zsh: zsh/p10k.zsh
+
+   # VIM
+   ~/.vim: vim
+   ~/.vimrc: vim/vimrc
+   ~/.gvimrc: vim/gvimrc
+
+   # tmux
+   ~/.tmux.conf: tmux/tmux.conf
+   ~/.tmux-powerlinerc: tmux/tmux-powerlinerc
+
+   # X
+   ~/.Xdefaults: X/Xdefaults
+   ~/.xmodmaprc: X/xmodmaprc
+
+   # bins
+   ~/bin: bin
+
+- create:
+  - ~/tmp
+
