@@ -25,4 +25,5 @@ echo -n "starting GPG Agent..."
 gpgconf --launch gpg-agent
 echo "done"
 
+gpg --card-status
 
