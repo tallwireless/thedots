@@ -21,7 +21,7 @@
 	url = https://github.com/leafgarland/typescript-vim.git
 [submodule "tmux/tmux-powerline"]
 	path = tmux/tmux-powerline
-    url = git@github.com:tallwireless/tmux-powerline.git
+    url = https://github.com/tallwireless/tmux-powerline.git
 	branch = master
 [submodule "dotbot"]
 	path = dotbot
