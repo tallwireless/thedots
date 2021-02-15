@@ -27,3 +27,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "crontab-dotbot"]
+	path = crontab-dotbot
+	url = https://github.com/fundor333/crontab-dotbot.git

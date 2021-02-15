@@ -61,3 +61,8 @@
     command: chmod 700 ~/.ssh
   - description: Fix ~/.ssh/config permissions
     command: chmod 600 ~/.ssh/config
+
+
+- crontab:
+  - cron: 0 3 * * *
+    command: $HOME/thedots/install > /dev/null
