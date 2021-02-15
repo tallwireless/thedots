@@ -13,6 +13,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${BASEDIR}"
 
 #Update the submodules in the configs repo
+git pull
 git submodule update --init
 
 ## Update the dotbot
