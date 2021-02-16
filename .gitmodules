@@ -21,9 +21,12 @@
 	url = https://github.com/leafgarland/typescript-vim.git
 [submodule "tmux/tmux-powerline"]
 	path = tmux/tmux-powerline
-    url = git@github.com:tallwireless/tmux-powerline.git
+    url = https://github.com/tallwireless/tmux-powerline.git
 	branch = master
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "crontab-dotbot"]
+	path = crontab-dotbot
+	url = https://github.com/fundor333/crontab-dotbot.git

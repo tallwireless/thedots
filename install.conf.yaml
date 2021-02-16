@@ -54,6 +54,15 @@
      if: '[ `uname` = Darwin ]'
      force: true
 
+    # forwards
+#   ~/.forward:
+#     path: forwards/sctg
+#     if: '[ ! `grep servercentral /etc/resolv.conf > /dev/null` ]'
+#
+#   ~/.forward:
+#     path: forwards/tallwireless
+#     if: '[ ! `grep tallwireless /etc/resolv.conf > /dev/null` ]'
+
 - create:
   - ~/tmp
   - ~/code
@@ -63,3 +72,8 @@
     command: chmod 700 ~/.ssh
   - description: Fix ~/.ssh/config permissions
     command: chmod 600 ~/.ssh/config
+
+
+- crontab:
+  - cron: 0 3 * * *
+    command: $HOME/thedots/install > /dev/null
