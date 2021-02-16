@@ -65,9 +65,9 @@ set showfulltag             " Show more information while completing tags
 filetype plugin indent on   " Use filetype-specific indenting where available
 
 """ Folding
-set foldmethod=indent       " By default, use syntax to determine folds
+"set foldmethod=indent       " By default, use syntax to determine folds
 "set foldcolumn=4
-set foldlevelstart=99       " All folds open by default
+"set foldlevelstart=99       " All folds open by default
 
 """ Reading/Writing
 set noautowrite             " This should be default, but I worry...
