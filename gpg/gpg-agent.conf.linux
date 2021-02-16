@@ -2,4 +2,4 @@ enable-ssh-support
 pinentry-program /usr/bin/pinentry
 default-cache-ttl 60
 max-cache-ttl 120
-log-file /home/charlesr/logs/gpg-agent.log
+log-file $HOME/logs/gpg-agent.log

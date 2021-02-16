@@ -41,7 +41,18 @@
      force: true
 
    ~/.gnupg/gpg.conf: gpg/gpg.conf
-   ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
+
+   ~/.gnupg/gpg-agent.conf:
+     glob: true
+     path: gpg/gpg-agent.conf.linux
+     if: '[ `uname` = Linux ]'
+     force: true
+
+   ~/.gnupg/gpg-agent.conf:
+     glob: true
+     path: gpg/gpg-agent.conf.macosx
+     if: '[ `uname` = Darwin ]'
+     force: true
 
 - create:
   - ~/tmp
