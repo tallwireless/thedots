@@ -10,6 +10,6 @@ POSS_LOCS=(.env .dev-env env dev-env)
 for LOCATION in ${POSS_LOCS[@]}; do
     if [[ -f ${LOCATION}/${ACTIVATE} ]]; then
         source "${LOCATION}${ACTIVATE}"
-        exec /bin/zsh
+        exec zsh
     fi
 done
