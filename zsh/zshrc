@@ -89,6 +89,15 @@ plugins=(
 #    plugins+=(ssh-agent)
 #fi
 
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]="fg=green,bold"
+ZSH_HIGHLIGHT_STYLES[path_prefix]="fg=green,bold"
+ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=red,bold"
+ZSH_HIGHLIGHT_STYLES[globbing]="fg=blue,bold"
+
+
+
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
