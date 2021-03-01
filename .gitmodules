@@ -33,3 +33,6 @@
 [submodule "vim/pack/tpope/start/surround"]
 	path = vim/pack/tpope/start/surround
 	url = https://tpope.io/vim/surround.git
+[submodule "chromaterm/netcli-highlight"]
+	path = chromaterm/netcli-highlight
+	url = https://github.com/danielmacuare/netcli-highlight

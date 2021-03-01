@@ -54,6 +54,8 @@
      if: '[ `uname` = Darwin ]'
      force: true
 
+   ~/.chromaterm.yml: chromaterm/chromaterm.yml
+    
     # forwards
 #   ~/.forward:
 #     path: forwards/sctg
