@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/Users/charlesr/code/irrpt/conf'
+let g:netrw_dirhist_4='/Users/charlesr/code/irrpt/bin'
+let g:netrw_dirhist_3='/Users/charlesr/tmp'
+let g:netrw_dirhist_2='/Users/charlesr/thedots/tmux/tmux-powerline'
+let g:netrw_dirhist_1='/Users/charlesr/code/ansible/ansible1-ord6/prod-hosts/group_vars'
