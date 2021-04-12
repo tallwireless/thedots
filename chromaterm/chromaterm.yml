@@ -92,7 +92,7 @@ rules:
       color: *green
     
     - description: Active
-      regex: " (Conne|Activ)$"
+      regex: " (Connect|Active)$"
       color: *yellow
     
     - description: Idle
@@ -100,9 +100,12 @@ rules:
       color: *red
 
     - description: Status
-      regex: '(Type: [a-zA-Z]*) *(State: [a-zA-Z]*) *(Flags: .*)$'
+      regex: '(Type: [a-zA-Z]*).*(State: ((Established)|(Connecting|Active)|(Idle))) *(Flags: .*)$'
       color: 
-        2: *green
+        2: *orange
+        3: *green
+        4: *yellow
+        5: *red
     
     - description: Error
       regex: '( Last)? Error: .*'
