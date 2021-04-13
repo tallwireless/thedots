@@ -77,10 +77,13 @@ plugins=(
   common-aliases
   cp
   systemd
-  docker 
-  pyenv
+  docker
+  docker-compose
   python
   systemd
+  pip
+  tmux
+  zsh_reload
 )
 
 #if  ! [ -z $SSH_AUTH ]  && [ $SSH_AUTH = "gpg" ]; then
