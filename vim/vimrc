@@ -17,11 +17,34 @@ else
     autocmd BufEnter * let &titlestring = "vim (" . expand("%") . ")"
 endif
 
+
+
+
 "set titlestring=vim:%F%a%r%m titlelen=70
 "t
 "Settings
 set nocompatible            " Don't try to be vi compatible - be better.
+filetype off
 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Bundle 'Valloric/YouCompleteMe'
+Plugin 'joshdick/onedark.vim'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-commentary'
+Plugin 'jeetsukumaran/vim-pythonsense'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'dense-analysis/ale'
+Plugin 'itchyny/lightline.vim'
+Plugin 'tomasr/molokai'
+call vundle#end()
+
+
+filetype plugin indent on
 """ Terminal Setup
 if s:TERMINAL
     set ttyscroll=3           " Prefer redraw to scrolling for more than 3 lines
@@ -67,6 +90,9 @@ set nowrap                  " Turn off word wrap
 
 """ Coding
 syntax on                   " Do syntax highlighting
+
+let g:python_highlight_all = 1
+highlight Comment cterm=bold
 set expandtab               " When I press tab, insert spaces
 set shiftwidth=4            " Each tab is represented with 2 spaces for indents
 set softtabstop=4           " As well as for pressing <TAB>
@@ -76,9 +102,8 @@ set showfulltag             " Show more information while completing tags
 filetype plugin indent on   " Use filetype-specific indenting where available
 
 """ Folding
-"set foldmethod=indent       " By default, use syntax to determine folds
-"set foldcolumn=4
-"set foldlevelstart=99       " All folds open by default
+set foldmethod=indent       " By default, use syntax to determine folds
+set foldlevelstart=99       " All folds open by default
 
 """ Reading/Writing
 set noautowrite             " This should be default, but I worry...
@@ -158,14 +183,17 @@ endfunc
 set textwidth=78
 set autoindent
 
-colorscheme default
+colo molokai
+
  
 set listchars+=space:␣
 
-let g:python_highlight_all = 1
+"" Status Line
+"
+set laststatus=2
 
-
-" IndentLine Configs
+"
+"IndentLine Configs
 nnoremap <F4> :IndentLinesToggle<CR>
 let g:indentLine_enabled = 0
 let g:indentLine_color_term = 237

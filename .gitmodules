@@ -36,3 +36,9 @@
 [submodule "chromaterm/netcli-highlight"]
 	path = chromaterm/netcli-highlight
 	url = https://github.com/danielmacuare/netcli-highlight
+[submodule "vim/bundle/Vundle.vim"]
+	path = vim/bundle/Vundle.vim
+	url = https://github.com/gmarik/Vundle.vim.git
+[submodule "vim/pack/python-mode"]
+	path = vim/pack/python-mode
+	url = https://github.com/python-mode/python-mode.git
