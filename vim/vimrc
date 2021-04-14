@@ -8,7 +8,18 @@
 " In a terminal unless we're in a gui
 let s:TERMINAL = ! has('gui_running')
 
-"" Settings
+set title
+if !empty($TMUX) 
+    autocmd BufEnter * let &titlestring = "v(" . expand("%:t") . ")"
+    set t_ts=k
+    set t_fs=\
+else
+    autocmd BufEnter * let &titlestring = "vim (" . expand("%") . ")"
+endif
+
+"set titlestring=vim:%F%a%r%m titlelen=70
+"t
+"Settings
 set nocompatible            " Don't try to be vi compatible - be better.
 
 """ Terminal Setup
