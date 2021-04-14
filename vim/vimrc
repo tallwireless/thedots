@@ -17,12 +17,29 @@ else
     autocmd BufEnter * let &titlestring = "vim (" . expand("%") . ")"
 endif
 
+
+
+
 "set titlestring=vim:%F%a%r%m titlelen=70
 "t
 "Settings
 set nocompatible            " Don't try to be vi compatible - be better.
+filetype off
 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Bundle 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
+call vundle#end()
+filetype plugin indent on
 """ Terminal Setup
+let python_highlight_all=1
+syntax on
+
 if s:TERMINAL
     set ttyscroll=3           " Prefer redraw to scrolling for more than 3 lines
     set timeoutlen=700        " Wait 700 ms before timing out a mapping
