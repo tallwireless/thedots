@@ -2,3 +2,5 @@
 .zsh_local
 
 *.sw*
+
+vim/bundle/*
