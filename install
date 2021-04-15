@@ -14,7 +14,8 @@ cd "${BASEDIR}"
 
 #Update the submodules in the configs repo
 git pull
-git submodule update --init
+git submodule update --init --recursive
+
 
 ## Update the dotbot
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
