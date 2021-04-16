@@ -9,7 +9,7 @@
 let s:TERMINAL = ! has('gui_running')
 
 set title
-if !empty($TMUX) 
+if !empty($TMUX)
     autocmd BufEnter * let &titlestring = "v(" . expand("%:t") . ")"
     set t_ts=k
     set t_fs=\
@@ -185,14 +185,17 @@ set textwidth=78
 set autoindent
 
 colo molokai
+hi Visual term=reverse cterm=reverse
 
- 
+
 set listchars+=space:␣
 
 "" Status Line
 "
 set laststatus=2
 
+
+""" ALE CONFIGURATION
 let g:ale_linters = {
       \   'python': ['flake8', 'pylint'],
       \}
@@ -201,7 +204,12 @@ let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'python'
 nmap <F10> :ALEFix<CR>
 let g:ale_fix_on_save = 1
 
-"
+
+let g:ale_sign_column_always = 1
+
+" Some file overrides
+autocmd FileType python setlocal numberwidth=4 number
+
 "IndentLine Configs
 nnoremap <F4> :IndentLinesToggle<CR>
 let g:indentLine_enabled = 0
