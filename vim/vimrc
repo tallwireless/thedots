@@ -15,6 +15,8 @@ if !empty($TMUX)
     set t_fs=\
 else
     autocmd BufEnter * let &titlestring = "vim (" . expand("%") . ")"
+    set t_ts=k
+    set t_fs=\
 endif
 
 
