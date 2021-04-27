@@ -311,10 +311,10 @@ set_from_resource $i3-wm.bar.font i3-wm.bar.font "Meslo LG M DZ Regular Nerd Fon
 #
 ## Configure the bar
 bar {
-  font pango:Inconsolata 11
+  font pango:Inconsolata 15
   separator_symbol " "
   #status_command i3xrocks -c $i3xrocks_config
-  status_command /home/charlesr/code/bumblebee-status/bumblebee-status #-m amixer date time -p time.format="%H:%M" -p date.format="%Y/%m/%d" -p amixer.wheel-up="amixer -D pulse sset Master 10%+" -p amixer.wheel-down="amixer -D pulse sset Master 10%-" -p amixer.middle-click="amixer -D pulse sset master toggle" -t powerline
+  status_command /home/charlesr/thedots/bumblebee/bumblebee-status/bumblebee-status #-m amixer date time -p time.format="%H:%M" -p date.format="%Y/%m/%d" -p amixer.wheel-up="amixer -D pulse sset Master 10%+" -p amixer.wheel-down="amixer -D pulse sset Master 10%-" -p amixer.middle-click="amixer -D pulse sset master toggle" -t powerline
   position bottom
   strip_workspace_numbers yes
 
