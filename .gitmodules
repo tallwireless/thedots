@@ -42,3 +42,6 @@
 [submodule "vim/pack/python-mode"]
 	path = vim/pack/python-mode
 	url = https://github.com/python-mode/python-mode.git
+[submodule "bumblebee/bumblebee-status"]
+	path = bumblebee/bumblebee-status
+	url = https://github.com/tobi-wan-kenobi/bumblebee-status.git

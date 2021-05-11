@@ -1,5 +1,5 @@
 ---
- 
+
 - defaults:
     link:
       relink: true
@@ -55,7 +55,17 @@
      force: true
 
    ~/.chromaterm.yml: chromaterm/chromaterm.yml
-    
+
+   ~/.bumblebee-status.conf:
+     path: bumblebee/hyde.conf
+     if: '[ `hostname` == "hyde.tallwireless.com"]'
+     force: true
+
+   ~/.bumblebee-status.conf:
+     path: bumblebee/general.conf
+     if: '[ ! `hostname` == "hyde.tallwireless.com"]'
+     force: true
+
     # forwards
 #   ~/.forward:
 #     path: forwards/sctg
