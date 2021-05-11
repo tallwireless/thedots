@@ -4,9 +4,6 @@
 ServerAliveInterval 60
 VerifyHostKeyDNS=yes
 
-#host trampoline* config* *.net.isc.upenn.edu
-#ControlMaster auto
-#ControlPath ~/.ssh/cm_socket/%r@%h:%p
 
 ForwardAgent yes
 
