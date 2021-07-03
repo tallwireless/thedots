@@ -542,7 +542,7 @@
   ##################################[ context: user@hostname ]##################################
   # Default context color.
   hostname=`hostname`
-  color=$(( ${#hostname} % 8 ))
+  color=$(( `shuf -i 1-256 -n 1` ))
   typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=232
   typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND=$color
   # Default context format: %n is username, %m is hostname.
