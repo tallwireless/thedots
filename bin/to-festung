@@ -38,9 +38,9 @@ DIRECTION=`echo ${WHOAMI} | cut -d- -f1`
 
 if [[ $WHOAMI == *"to"* ]]; then
     TO=${REMOTE}.tallwireless.com:$PWD
-    FROM=$PWD
+    FROM=$PWD/
 else
-    FROM=${REMOTE}.tallwireless.com:$PWD
+    FROM=${REMOTE}.tallwireless.com:$PWD/
     TO=$PWD
 fi
 
