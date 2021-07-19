@@ -24,5 +24,5 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 #"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir crontab-dotbot -c "${CONFIG}" "${@}"
 
-vim -c 'PluginInstall' > /dev/null
-vim -c 'PluginClean' > /dev/null
+vim -c 'PluginInstall' -c 'qall' > /dev/null
+vim -c 'PluginClean' -c 'qall' > /dev/null
