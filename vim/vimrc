@@ -32,7 +32,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tmhedberg/SimpylFold'
+Plugin 'unblevable/quick-scope'
+"Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'joshdick/onedark.vim'
@@ -86,8 +87,8 @@ set backspace=2             " Backspace over autoindent, EOL, and BOL
 set infercase               " Try to guess at case for insertions if not a match
 set showmatch               " Briefly jump to the previous matching paren
 set matchtime=2             " For .2 seconds
-"set formatoptions+=n        " gq recognizes numbered lists, and will try to
-"set formatoptions+=1        " break before, not after, a 1 letter word
+set formatoptions+=n        " gq recognizes numbered lists, and will try to
+set formatoptions+=1        " break before, not after, a 1 letter word
 set nowrap                  " Turn off word wrap
 
 """ Coding
@@ -95,6 +96,7 @@ syntax on                   " Do syntax highlighting
 
 let g:python_highlight_all = 1
 highlight Comment cterm=bold
+
 set expandtab               " When I press tab, insert spaces
 set shiftwidth=4            " Each tab is represented with 2 spaces for indents
 set softtabstop=4           " As well as for pressing <TAB>
@@ -182,7 +184,7 @@ function! EatChar(pat)
     return (c =~ a:pat) ? '' : c
 endfunc
 
-set textwidth=78
+set textwidth=90
 set autoindent
 
 colo molokai
@@ -215,3 +217,7 @@ autocmd FileType python setlocal numberwidth=4 number
 nnoremap <F4> :IndentLinesToggle<CR>
 let g:indentLine_enabled = 0
 let g:indentLine_color_term = 237
+
+
+"quick-scope
+let g:qs_highlight_on_keys = ['f', 'F','t','T']
