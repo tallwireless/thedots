@@ -45,6 +45,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'tomasr/molokai'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'tpope/vim-surround'
+Plugin 'vimwiki/vimwiki'
 call vundle#end()
 
 
@@ -222,3 +223,7 @@ let g:indentLine_color_term = 237
 
 "quick-scope
 let g:qs_highlight_on_keys = ['f', 'F','t','T']
+
+
+"VimWiki
+let g:vimwiki_list = [{'path': '~/thedots/vim/vimwiki', 'syntax':'markdown', 'ext':'.md'}]
