@@ -35,7 +35,9 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'unblevable/quick-scope'
 "Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-Bundle 'Valloric/YouCompleteMe'
+if !empty($VIM_YCM)
+    Bundle 'Valloric/YouCompleteMe'
+endif
 Plugin 'joshdick/onedark.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-commentary'
