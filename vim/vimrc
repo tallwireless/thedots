@@ -48,10 +48,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'vimwiki/vimwiki'
 Plugin 'preservim/nerdtree'
 Plugin 'voldikss/vim-floaterm'
+Plugin 'airblade/vim-gitgutter'
 call vundle#end()
 
 
-filetype plugin indent on
 """ Terminal Setup
 if s:TERMINAL
     set ttyscroll=3           " Prefer redraw to scrolling for more than 3 lines
