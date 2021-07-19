@@ -46,6 +46,8 @@ Plugin 'tomasr/molokai'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'tpope/vim-surround'
 Plugin 'vimwiki/vimwiki'
+Plugin 'preservim/nerdtree'
+Plugin 'voldikss/vim-floaterm'
 call vundle#end()
 
 
@@ -55,7 +57,8 @@ if s:TERMINAL
     set ttyscroll=3           " Prefer redraw to scrolling for more than 3 lines
     set timeoutlen=700        " Wait 700 ms before timing out a mapping
     set ttimeoutlen=100       " and only 100 ms before timing out on a keypress
-"   set mouse=a               " Allow mouse use in all modes
+   set mouse=
+set ttymouse=
 "   set ttymouse=xterm2       " Terminal sends modern xterm mouse reporting.
 endif
 
@@ -138,6 +141,11 @@ cnoremap <ESC>b    <S-Left>
 cnoremap <ESC>f    <S-Right>
 cnoremap <ESC><BS> <C-W>
 
+" Disable center click, let the term handle it for me
+map <MiddleMouse> <Nop>
+imap <MiddleMouse> <Nop>
+
+
 " Mappings
 " <C-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-n> :nohl<CR><C-l>
@@ -154,8 +162,6 @@ noremap <silent> <S-f> za
 " \s toggles spell checking
 noremap <silent> <Leader>s :call ToggleSpell()<CR>
 noremap <silent> <Leader>m :call SaveMake()<CR>
-
-set clipboard=unnamed
 
 
 nnoremap <F2> :set invpaste paste?<CR>
@@ -227,3 +233,16 @@ let g:qs_highlight_on_keys = ['f', 'F','t','T']
 
 "VimWiki
 let g:vimwiki_list = [{'path': '~/thedots/vim/vimwiki', 'syntax':'markdown', 'ext':'.md'}]
+
+"NERDTree
+nnoremap <Leader>n :NERDTreeFocus<CR>
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" FloatTerm
+nnoremap   <silent>   <F12>   :FloatermToggle<CR>
+tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
+let g:floaterm_wintype = "split"
+let g:floaterm_position = "aboveleft"
