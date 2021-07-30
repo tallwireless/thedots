@@ -137,6 +137,7 @@ alias ip6="ip -6 -br -c"
 alias flush-dns="sudo systemd-resolve --flush-caches"
 alias nightynight="sudo systemctl hibernate"
 alias thedots="~/thedots/install"
+alias ki="kinit charlesr@TALLWIRELESS.COM"
 # alias zshconfig="mate ~/.zshrc"
 
 # alias ohmyzsh="mate ~/.oh-my-zsh"
