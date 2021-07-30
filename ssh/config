@@ -2,7 +2,9 @@
 #ControlPath ~/.ssh_local/socket-%r@%h:%p
 
 ServerAliveInterval 60
-VerifyHostKeyDNS=yes
+VerifyHostKeyDNS yes
+
+GSSAPIAuthentication yes
 
 
 ForwardAgent yes
