@@ -44,10 +44,10 @@ Plugin 'tpope/vim-commentary'
 Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'dense-analysis/ale'
 Plugin 'itchyny/lightline.vim'
-Plugin 'tomasr/molokai'
+"Plugin 'tomasr/molokai'
+Plugin 'rakr/vim-one'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'tpope/vim-surround'
-Plugin 'vimwiki/vimwiki'
 Plugin 'preservim/nerdtree'
 Plugin 'voldikss/vim-floaterm'
 Plugin 'airblade/vim-gitgutter'
@@ -197,9 +197,20 @@ endfunc
 set textwidth=80
 set autoindent
 
-colo molokai
+colo one
+set background=dark
+call one#highlight('Comment', 'ff0000', '', 'bold')
+call one#highlight('lineComment', 'ff0000', '', 'bold')
 hi Visual term=reverse cterm=reverse
 
+
+nmap <F8> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 
 set listchars+=space:␣
 
