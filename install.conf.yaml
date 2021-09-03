@@ -7,6 +7,11 @@
 
 - clean: ['~']
 
+- create:
+  - ~/tmp
+  - ~/code
+  - ~/.config/nvim
+
 - link:
    # The ZSH stuff
    ~/.oh-my-zsh: oh-my-zsh
@@ -17,6 +22,7 @@
    ~/.vim: vim
    ~/.vimrc: vim/vimrc
    ~/.gvimrc: vim/gvimrc
+
 
    # tmux
    ~/.tmux.conf: tmux/tmux.conf
@@ -39,6 +45,8 @@
      path: config/*
      if: '[ `uname` = Linux ]'
      force: true
+
+   ~/.config/nvim/init.vim: nvim/nvimrc
 
    ~/.gnupg/gpg.conf: gpg/gpg.conf
 
@@ -75,9 +83,6 @@
 #     path: forwards/tallwireless
 #     if: '[ ! `grep tallwireless /etc/resolv.conf > /dev/null` ]'
 
-- create:
-  - ~/tmp
-  - ~/code
 
 - shell:
   - description: Fix ~/.ssh permissions
