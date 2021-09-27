@@ -132,7 +132,7 @@ export EDITOR='vim'
 # Example aliases
 
 which nvim 2>&1 > /dev/null
-if [ ! $? ]; then
+if [ $? ]; then
     alias vi=vim
 else
     alias vi="nvim"
