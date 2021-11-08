@@ -3,6 +3,10 @@
 #export GEM_HOME="$HOME/gems"
 #export PATH="$HOME/gems/bin:$PATH"
 #export PATH=$HOME/local/bin:$HOME/bin:/usr/local/bin:$PATH
+which pyenv 2>&1 > /dev/null
+if [ $? ]; then
+    eval "$(pyenv init -)"
+fi
 export MANPATH=$HOME/local/usr/man:$MANPATH
 export PATH=$HOME/bin:$PATH
 # Path to your oh-my-zsh installation.
@@ -84,7 +88,6 @@ plugins=(
   systemd
   pip
   tmux
-  zsh_reload
 )
 
 #if  ! [ -z $SSH_AUTH ]  && [ $SSH_AUTH = "gpg" ]; then

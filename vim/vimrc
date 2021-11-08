@@ -35,10 +35,18 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'unblevable/quick-scope'
 "Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-if !empty($VIM_YCM)
-    Bundle 'Valloric/YouCompleteMe'
+"if !empty($VIM_YCM)
+ "   Bundle 'Valloric/YouCompleteMe'
+"endif
+if has('nvim')
+  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plugin 'Shougo/deoplete.nvim'
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
 endif
 Plugin 'joshdick/onedark.vim'
+Plugin 'numirias/semshi'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-commentary'
 Plugin 'jeetsukumaran/vim-pythonsense'
@@ -53,14 +61,15 @@ Plugin 'voldikss/vim-floaterm'
 Plugin 'airblade/vim-gitgutter'
 call vundle#end()
 
+let g:deoplete#enable_at_startup = 1
 
 """ Terminal Setup
 if s:TERMINAL
-    set ttyscroll=3           " Prefer redraw to scrolling for more than 3 lines
+    "set ttyscroll=3           " Prefer redraw to scrolling for more than 3 lines
     set timeoutlen=700        " Wait 700 ms before timing out a mapping
     set ttimeoutlen=100       " and only 100 ms before timing out on a keypress
    set mouse=
-set ttymouse=
+"set ttymouse=
 "   set ttymouse=xterm2       " Terminal sends modern xterm mouse reporting.
 endif
 
@@ -197,11 +206,9 @@ endfunc
 set textwidth=80
 set autoindent
 
-colo one
+colo elflord
 set background=dark
-call one#highlight('Comment', 'ff0000', '', 'bold')
-call one#highlight('lineComment', 'ff0000', '', 'bold')
-hi Visual term=reverse cterm=reverse
+"hi Visual term=reverse cterm=reverse
 
 
 nmap <F8> :call <SID>SynStack()<CR>
