@@ -40,19 +40,17 @@ Plugin 'vim-scripts/indentpython.vim'
 "endif
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plugin 'numirias/semshi'
 else
-  Plugin 'Shougo/deoplete.nvim'
   Plugin 'roxma/nvim-yarp'
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
 Plugin 'joshdick/onedark.vim'
-Plugin 'numirias/semshi'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-commentary'
 Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'dense-analysis/ale'
 Plugin 'itchyny/lightline.vim'
-"Plugin 'tomasr/molokai'
 Plugin 'rakr/vim-one'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'tpope/vim-surround'
