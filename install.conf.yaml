@@ -17,6 +17,7 @@
    ~/.oh-my-zsh: oh-my-zsh
    ~/.zshrc: zsh/zshrc
    ~/.p10k.zsh: zsh/p10k.zsh
+   ~/.zsh_completion: zsh/completions
 
    # VIM
    ~/.vim: vim
