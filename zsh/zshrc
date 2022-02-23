@@ -3,6 +3,9 @@
 #export GEM_HOME="$HOME/gems"
 #export PATH="$HOME/gems/bin:$PATH"
 #export PATH=$HOME/local/bin:$HOME/bin:/usr/local/bin:$PATH
+
+
+
 which pyenv 2>&1 > /dev/null
 if [ $? ]; then
     eval "$(pyenv init -)"
@@ -12,9 +15,6 @@ export PATH=$HOME/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
-if [ -f ~/.zshlocal ]; then
-    source ~/.zshlocal
-fi
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -107,12 +107,18 @@ ZSH_HIGHLIGHT_STYLES[globbing]="fg=blue,bold"
 
 source $ZSH/oh-my-zsh.sh
 
+export fpath=(~/.zsh_local_completion ~/.zsh_completion $fpath)
+#
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+
+if [ -f ~/.zshlocal ]; then
+    source ~/.zshlocal
+fi
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -141,21 +147,17 @@ if [ $? -eq 0 ]; then
 else
     alias vi=vim
 fi
+
 alias ip="ip -br -c"
 alias ip6="ip -6 -br -c"
 alias flush-dns="sudo systemd-resolve --flush-caches"
 alias nightynight="sudo systemctl hibernate"
 alias thedots="~/thedots/install"
 alias ki="kinit charlesr@TALLWIRELESS.COM"
-alias vimt="vim \"+tab all\""
-# alias zshconfig="mate ~/.zshrc"
-
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-
+alias pyenv="source bin/env/activate"
 
 # ssh-agent customizations
-#zstyle :omz:plugins:ssh-agent agent-forwarding on
+zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 setopt AutoList            2>/dev/null
 setopt NoBashAutoList      1>/dev/null
@@ -166,6 +168,7 @@ setopt CompleteAliases     2>/dev/null
 setopt Correct             2>/dev/null
 
 autoload -U history-search-end
+
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^[[A" history-beginning-search-backward-end
@@ -228,10 +231,10 @@ bindkey "^[[B" history-beginning-search-forward-end
     # Show a warning when no completions were found
     zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
 
+
 #    if ! (( ${+TMUX_PANE} ))  && (( ${+ZSH_TMUX_TERM} )); then
 #        DISABLE_AUTO_TITLE="true"
 #fi
-
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
