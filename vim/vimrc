@@ -20,7 +20,7 @@ else
 endif
 
 
-
+set directory^=~/tmp//
 
 "set titlestring=vim:%F%a%r%m titlelen=70
 "t
