@@ -1,0 +1,23 @@
+# Shells and Utilities
+zsh
+git
+tmux
+borgbackup
+terminator
+
+
+# Editors
+neovim
+vim
+
+
+# Communications
+thunderbird
+
+
+# Libraries
+fuse2
+
+# Python Libraries
+python-llfuse
+python-pip
