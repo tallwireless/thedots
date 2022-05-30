@@ -4,7 +4,10 @@ git
 tmux
 borgbackup
 terminator
+wget
+yajl
 
+# programming
 
 # Editors
 neovim
