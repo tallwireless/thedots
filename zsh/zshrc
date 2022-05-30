@@ -156,6 +156,9 @@ alias thedots="~/thedots/install"
 alias ki="kinit charlesr@TALLWIRELESS.COM"
 alias pyenv="source bin/env/activate"
 
+alias tw-pacman = "grep -v '#' ~/thedots/manjaro-pacman | sudo xargs pacman -Sy"
+alias tw-pacman = "grep -v '#' ~/thedots/manjaro-yaourt | sudo xargs yaourt -Sy"
+
 # ssh-agent customizations
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
