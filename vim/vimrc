@@ -226,7 +226,7 @@ set laststatus=2
 
 """ ALE CONFIGURATION
 let g:ale_linters = {
-      \   'python': ['flake8', 'pylint'],
+      \   'python': ['flake8', 'pylint'], '*': [],
       \}
 let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['black'], }
 

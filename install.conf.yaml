@@ -24,7 +24,6 @@
    ~/.vimrc: vim/vimrc
    ~/.gvimrc: vim/gvimrc
 
-
    # tmux
    ~/.tmux.conf: tmux/tmux.conf
    ~/.tmux-powerlinerc: tmux/tmux-powerlinerc
@@ -35,6 +34,15 @@
 
    # bins
    ~/bin: bin
+
+   # i3 stuffs
+   ~/.i3/config:
+    create: true
+    path: i3/config
+
+   ~/.i3status.conf:
+    create: true
+    path: i3/i3status.conf
 
    # ssh
    ~/.ssh/config:
