@@ -44,9 +44,9 @@ if has('nvim')
 else
   Plugin 'roxma/nvim-yarp'
   Plugin 'roxma/vim-hug-neovim-rpc'
+  Plugin 'sheerun/vim-polyglot'
 endif
 Plugin 'joshdick/onedark.vim'
-Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-commentary'
 Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'dense-analysis/ale'
