@@ -67,7 +67,7 @@ bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill picom
+#bindsym $mod+t exec --no-startup-id pkill picom
 bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
@@ -120,6 +120,10 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
+## cycle across workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
 # toggle tiling / floating
 #bindsym $mod+Shift+space floating toggle
 
@@ -156,6 +160,17 @@ set $ws6 6
 set $ws7 7
 set $ws8 8
 
+# toggle tabbed mode
+bindsym $mod+t layout toggle tabbed splith splitv
+
+# rename a workspace
+bindsym $mod+comma exec /home/charlesr/bin/ws-rename
+
+popup_during_fullscreen smart
+
+default_border pixel
+default_floating_border pixel
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -191,6 +206,12 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
+
+
+for_window [class="Thunderbird" instance="Msgcompose"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [class=".*"] border pixel 4
+
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -345,11 +366,12 @@ bar {
         separator  #454947
 
 #                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
+        focused_workspace  #F9FAF9 #a25c16 #292F34
+        #focused_workspace  #F9FAF9 #16a085 #292F34
         active_workspace   #595B5B #353836 #FDF6E3
         inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
+        binding_mode       #a25c16 #2C2C2C #F9FAF9
+        urgent_workspace   #a25c16 #FDF6E3 #E5201D
     }
 }
 
