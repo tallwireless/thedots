@@ -121,8 +121,6 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 ## cycle across workspaces
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
 
 # toggle tiling / floating
 #bindsym $mod+Shift+space floating toggle
@@ -147,21 +145,10 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
-# Workspace names
-# to display names or symbols instead of plain workspace numbers you can use
-# something like: set $ws1 1:mail
-#                 set $ws2 2:
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
-
 # toggle tabbed mode
 bindsym $mod+t layout toggle tabbed splith splitv
+
+bindsym $mod+BackSpace split toggle
 
 # rename a workspace
 bindsym $mod+comma exec /home/charlesr/bin/ws-rename
@@ -171,35 +158,45 @@ popup_during_fullscreen smart
 default_border pixel
 default_floating_border pixel
 
-# switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
+## move to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+#
+## cycle across workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
-# Move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace $ws1
-bindsym $mod+Ctrl+2 move container to workspace $ws2
-bindsym $mod+Ctrl+3 move container to workspace $ws3
-bindsym $mod+Ctrl+4 move container to workspace $ws4
-bindsym $mod+Ctrl+5 move container to workspace $ws5
-bindsym $mod+Ctrl+6 move container to workspace $ws6
-bindsym $mod+Ctrl+7 move container to workspace $ws7
-bindsym $mod+Ctrl+8 move container to workspace $ws8
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
-# Move to workspace with focused container
-bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+# move focused container to workspace, move to workspace
+bindsym $mod+$alt+1 move container to workspace number 1; workspace number 1
+bindsym $mod+$alt+2 move container to workspace number 2; workspace number 2
+bindsym $mod+$alt+3 move container to workspace number 3; workspace number 3
+bindsym $mod+$alt+4 move container to workspace number 4; workspace number 4
+bindsym $mod+$alt+5 move container to workspace number 5; workspace number 5
+bindsym $mod+$alt+6 move container to workspace number 6; workspace number 6
+bindsym $mod+$alt+7 move container to workspace number 7; workspace number 7
+bindsym $mod+$alt+8 move container to workspace number 8; workspace number 8
+bindsym $mod+$alt+9 move container to workspace number 9; workspace number 9
+bindsym $mod+$alt+0 move container to workspace number 10; workspace number 10
 
 # Open applications on specific workspaces
 # assign [class="Thunderbird"] $ws1
@@ -255,7 +252,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
-bindsym $mod+0 mode "$mode_system"
+bindsym $mod+Shift+P mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
@@ -306,7 +303,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-# exec --no-startup-id blueman-applet
+exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
@@ -393,8 +390,8 @@ bindsym $mod+m bar mode toggle
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
-gaps outer -2
+gaps inner 5
+gaps outer 2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -402,17 +399,75 @@ gaps outer -2
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
+#smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
+
+for_window [class=".*"] border pixel 4
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
+
+
+## Window Border color
+## class                 border                             background                         text                               indicator                          child_border
+client.focused          $focused.color.border              $focused.color.background          $focused.color.text                $focused.color.indicator           $focused.color.child_border
+client.focused_inactive $focused_inactive.color.border     $focused_inactive.color.background $focused_inactive.color.text       $focused_inactive.color.indicator  $focused_inactive.color.child_border
+client.unfocused        $unfocused.color.border            $unfocused.color.background        $unfocused.color.text              $unfocused.color.indicator         $unfocused.color.child_border
+client.urgent           $urgent.color.border               $urgent.color.background           $urgent.color.text                 $urgent.color.indicator            $urgent.color.child_border
+#
+## Enable popup during fullscreen
+set_from_resource $focused.color.border i3-wm.client.focused.color.border "#002b36"
+set_from_resource $focused.color.background i3-wm.client.focused.color.background "#586e75"
+set_from_resource $focused.color.text i3-wm.client.focused.color.text "#fdf6e3"
+set_from_resource $focused.color.indicator i3-wm.client.focused.color.indicator "#268bd2"
+set_from_resource $focused.color.child_border i3-wm.client.focused.color.child_border "#ff0000"
+
+set_from_resource $focused_inactive.color.border i3-wm.client.focused_inactive.color.border "#002b36"
+set_from_resource $focused_inactive.color.background i3-wm.client.focused_inactive.color.background "#073642"
+set_from_resource $focused_inactive.color.text i3-wm.client.focused_inactive.color.text "#839496"
+set_from_resource $focused_inactive.color.indicator i3-wm.client.focused_inactive.color.indicator "#073642"
+set_from_resource $focused_inactive.color.child_border i3-wm.client.focused_inactive.color.child_border
+
+set_from_resource $unfocused.color.border i3-wm.client.unfocused.color.border "#002b36"
+set_from_resource $unfocused.color.background i3-wm.client.unfocused.color.background "#073642"
+set_from_resource $unfocused.color.text i3-wm.client.unfocused.color.text "#839496"
+set_from_resource $unfocused.color.indicator i3-wm.client.unfocused.color.indicator "#073642"
+set_from_resource $unfocused.color.child_border i3-wm.client.unfocused.color.child_border
+
+set_from_resource $urgent.color.border i3-wm.client.urgent.color.border "#002b36"
+set_from_resource $urgent.color.background i3-wm.client.urgent.color.background "#dc322f"
+set_from_resource $urgent.color.text i3-wm.client.urgent.color.text "#fdf6e3"
+set_from_resource $urgent.color.indicator i3-wm.client.urgent.color.indicator "#002b36"
+set_from_resource $urgent.color.child_border i3-wm.client.urgent.color.child_border
+
+popup_during_fullscreen smart
+
+
+set_from_resource $i3-wm.bar.background.color i3-wm.bar.background.color "#002b36"
+set_from_resource $i3-wm.bar.statusline.color i3-wm.bar.statusline.color "#93a1a1"
+set_from_resource $i3-wm.bar.separator.color i3-wm.bar.separator.color "#268bd2"
+
+set_from_resource $i3-wm.bar.workspace.focused.border.color i3-wm.bar.workspace.focused.border.color "#073642"
+set_from_resource $i3-wm.bar.workspace.focused.background.color i3-wm.bar.workspace.focused.background.color "#073642"
+set_from_resource $i3-wm.bar.workspace.focused.text.color i3-wm.bar.workspace.focused.text.color "#eee8d5"
+
+set_from_resource $i3-wm.bar.workspace.active.border.color i3-wm.bar.workspace.active.border.color "#073642"
+set_from_resource $i3-wm.bar.workspace.active.background.color i3-wm.bar.workspace.active.background.color "#073642"
+set_from_resource $i3-wm.bar.workspace.active.text.color i3-wm.bar.workspace.active.text.color "#586e75"
+
+set_from_resource $i3-wm.bar.workspace.inactive.border.color i3-wm.bar.workspace.inactive.border.color "#002b36"
+set_from_resource $i3-wm.bar.workspace.inactive.background.color i3-wm.bar.workspace.inactive.background.color "#002b36"
+set_from_resource $i3-wm.bar.workspace.inactive.text.color i3-wm.bar.workspace.inactive.text.color "#586e75"
+
+set_from_resource $i3-wm.bar.workspace.urgent.border.color i3-wm.bar.workspace.urgent.border.color "#dc322f"
+set_from_resource $i3-wm.bar.workspace.urgent.background.color i3-wm.bar.workspace.urgent.background.color "#dc322f"
+set_from_resource $i3-wm.bar.workspace.urgent.text.color i3-wm.bar.workspace.urgent.text.color "#fdf6e3"
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
@@ -444,3 +499,5 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+exec --no-startup-id /usr/bin/unclutter -b
