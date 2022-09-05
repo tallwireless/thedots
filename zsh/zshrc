@@ -154,7 +154,7 @@ alias flush-dns="sudo systemd-resolve --flush-caches"
 alias nightynight="sudo systemctl hibernate"
 alias thedots="~/thedots/install"
 alias ki="kinit charlesr@TALLWIRELESS.COM"
-alias pyenv="source bin/env/activate"
+alias pyenv="source env/bin/activate"
 
 alias tw-pacman="grep -v '#' ~/thedots/manjaro-pacman | sudo xargs -o pacman -Sy"
 alias tw-yaourt="grep -v '#' ~/thedots/manjaro-yaourt | xargs -o yaourt -Sy"
