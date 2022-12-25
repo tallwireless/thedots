@@ -50,13 +50,12 @@
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
       # =========================[ Line #1 ]=========================
-      default_ip               # example user-defined segment (see prompt_example function below):
       status                  # exit code of the last command
       command_execution_time  # duration of the last command
       background_jobs         # presence of background jobs
       virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
       #anaconda                # conda environment (https://conda.io/)
-      #pyenv                   # python environment (https://github.com/pyenv/pyenv)
+      pyenv                   # python environment (https://github.com/pyenv/pyenv)
       #nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
       #nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
       #nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
@@ -72,16 +71,17 @@
       # aws_eb_env            # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
       # azure                 # azure account name (https://docs.microsoft.com/en-us/cli/azure)
       #nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
-      ranger                  # ranger shell (https://github.com/ranger/ranger)
+      #ranger                  # ranger shell (https://github.com/ranger/ranger)
       # vpn_ip                # virtual private network indicator
       # ram                   # free RAM
        battery               # internal battery
+      time                    # current time
       # =========================[ Line #2 ]=========================
       newline
-      # public_ip             # public IP address
+      default_ip               # example user-defined segment (see prompt_example function below):
+      public_ip             # public IP address
       # proxy                 # system-wide http/https/ftp proxy
       # load                  # CPU load
-      time                    # current time
        #example               # example user-defined segment (see prompt_example function below)
   )
 
@@ -865,7 +865,7 @@
           if [[  $? == 0 ]] ; then
               typeset -g IP_ADDRESS=`/bin/ip route get 8.8.8.8/32 | grep dev | sed 's/.*src \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*/\1/g'`
           fi
-          p10k segment -f 232 -b 106 -t "SRC IP:${IP_ADDRESS}"
+          p10k segment -f 232 -b 106 -t "${IP_ADDRESS}"
     fi
   }
 
