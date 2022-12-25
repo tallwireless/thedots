@@ -10,6 +10,7 @@ which pyenv 2>&1 > /dev/null
 if [ $? ]; then
     eval "$(pyenv init -)"
 fi
+
 export MANPATH=$HOME/local/usr/man:$MANPATH
 export PATH=$HOME/bin:$PATH
 # Path to your oh-my-zsh installation.
@@ -38,7 +39,7 @@ HYPHEN_INSENSITIVE="true"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to change how often to auto-update (in days).
+# Uncomment the following line to change how often to auto-update (in days)
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
@@ -68,6 +69,7 @@ HIST_STAMPS="yyyy-mm-dd"
 ZSH_CUSTOM=~/thedots/custom-zsh
 
 source ~/thedots/zsh/arduino-cli.zsh
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -88,6 +90,12 @@ plugins=(
   systemd
   pip
   tmux
+  gitignore
+  iterm2
+  jsontools
+  nmap
+  sudo
+
 )
 
 #if  ! [ -z $SSH_AUTH ]  && [ $SSH_AUTH = "gpg" ]; then
@@ -102,10 +110,10 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]="fg=green,bold"
 ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=red,bold"
 ZSH_HIGHLIGHT_STYLES[globbing]="fg=blue,bold"
 
-
-
-
 source $ZSH/oh-my-zsh.sh
+
+# Settings
+
 
 export fpath=(~/.zsh_local_completion ~/.zsh_completion $fpath)
 #
@@ -153,7 +161,6 @@ alias ip6="ip -6 -br -c"
 alias flush-dns="sudo systemd-resolve --flush-caches"
 alias nightynight="sudo systemctl hibernate"
 alias thedots="~/thedots/install"
-alias ki="kinit charlesr@TALLWIRELESS.COM"
 alias pyenv="source env/bin/activate"
 
 alias tw-pacman="grep -v '#' ~/thedots/manjaro-pacman | sudo xargs -o pacman -Sy"
