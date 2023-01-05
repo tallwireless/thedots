@@ -41,23 +41,28 @@ Plugin 'vim-scripts/indentpython.vim'
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plugin 'numirias/semshi'
+  Plugin 'nvim-telescope/telescope.nvim'
+  Plugin 'nvim-treesitter/nvim-treesitter'
+  Plugin 'cuducos/yaml.nvim'
 else
-  Plugin 'roxma/nvim-yarp'
   Plugin 'roxma/vim-hug-neovim-rpc'
   Plugin 'sheerun/vim-polyglot'
 endif
+Plugin 'elzr/vim-json'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'chr4/nginx.vim'
+Plugin 'chrisbra/Recover.vim'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'scottdware/vim-slax'
 Plugin 'joshdick/onedark.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'dense-analysis/ale'
 Plugin 'itchyny/lightline.vim'
-Plugin 'rakr/vim-one'
 Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'tpope/vim-surround'
 Plugin 'preservim/nerdtree'
-Plugin 'voldikss/vim-floaterm'
 Plugin 'airblade/vim-gitgutter'
 call vundle#end()
+
+color onedark
 
 let g:deoplete#enable_at_startup = 1
 
@@ -201,10 +206,9 @@ function! EatChar(pat)
     return (c =~ a:pat) ? '' : c
 endfunc
 
-set textwidth=80
+set textwidth=100
 set autoindent
 
-colo elflord
 set background=dark
 "hi Visual term=reverse cterm=reverse
 
@@ -264,3 +268,35 @@ nnoremap   <silent>   <F12>   :FloatermToggle<CR>
 tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
 let g:floaterm_wintype = "split"
 let g:floaterm_position = "aboveleft"
+
+
+function MyTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    " select the highlighting
+    if i + 1 == tabpagenr()
+      let s ..= '%#TabLineSel#'
+    else
+      let s ..= '%#TabLine#'
+    endif
+    " set the tab page number (for mouse clicks)
+    let s ..= '%' .. (i + 1) .. 'T'
+    " the label is made by MyTabLabel()
+    let s ..= ' %{MyTabLabel(' .. (i + 1) .. ')} '
+  endfor
+  " after the last tab fill with TabLineFill and reset tab page nr
+  let s ..= '%#TabLineFill#%T'
+  " right-align the label to close the current tab page
+  if tabpagenr('$') > 1
+    let s ..= '%=%#TabLine#%999Xclose'
+  endif
+  return s
+endfunction
+
+function MyTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  return bufname(buflist[winnr - 1])
+endfunction
+
+set tabline=%!MyTabLine()
