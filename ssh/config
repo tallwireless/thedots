@@ -11,7 +11,9 @@ ForwardAgent yes
 Ciphers aes128-cbc,aes256-cbc,chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com,
 
 KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
-HostKeyAlgorithms +ssh-dss
+HostKeyAlgorithms +ssh-dss,ssh-rsa
+
+
 
 host home
     hostname home.tallwireless.com

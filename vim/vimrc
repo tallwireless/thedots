@@ -66,6 +66,8 @@ color onedark
 
 let g:deoplete#enable_at_startup = 1
 
+
+
 """ Terminal Setup
 if s:TERMINAL
     "set ttyscroll=3           " Prefer redraw to scrolling for more than 3 lines
@@ -98,6 +100,8 @@ set shortmess+=a            " Use [+] [RO] [w] for modified, read-only, modified
 set showcmd                 " Display what command is waiting for an operator
 set ruler                   " Show pos below the win if there's no status line
 set laststatus=2            " Always show statusline, even if only 1 window
+set showtabline=2
+set noshowmode
 set report=0                " Notify me whenever any lines have changed
 set vb t_vb=                " Disable visual bell!  I hate that flashing.
 
@@ -115,6 +119,11 @@ syntax on                   " Do syntax highlighting
 
 let g:python_highlight_all = 1
 highlight Comment cterm=bold
+
+let g:lightline = {
+            \ 'colorscheme': 'srcery_drk',
+    \    }
+
 
 set expandtab               " When I press tab, insert spaces
 set shiftwidth=4            " Each tab is represented with 2 spaces for indents
@@ -181,7 +190,6 @@ noremap <silent> <Leader>m :call SaveMake()<CR>
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 nnoremap <F3> :set invlist list?<CR>
-set showmode
 
 """ Functions
 function! ToggleSpell()
@@ -268,8 +276,6 @@ nnoremap   <silent>   <F12>   :FloatermToggle<CR>
 tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
 let g:floaterm_wintype = "split"
 let g:floaterm_position = "aboveleft"
-<<<<<<< Updated upstream
-
 
 function MyTabLine()
   let s = ''
