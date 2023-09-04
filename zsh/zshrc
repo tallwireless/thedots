@@ -5,9 +5,9 @@
 #export PATH=$HOME/local/bin:$HOME/bin:/usr/local/bin:$PATH
 
 
-
 which pyenv 2>&1 > /dev/null
 if [ $? ]; then
+    echo "Pyenv Init..."
     eval "$(pyenv init -)"
 fi
 
@@ -161,7 +161,6 @@ alias ip6="ip -6 -br -c"
 alias flush-dns="sudo systemd-resolve --flush-caches"
 alias nightynight="sudo systemctl hibernate"
 alias thedots="~/thedots/install"
-alias pyenv="source env/bin/activate"
 
 alias tw-pacman="grep -v '#' ~/thedots/manjaro-pacman | sudo xargs -o pacman -Sy"
 alias tw-yaourt="grep -v '#' ~/thedots/manjaro-yaourt | xargs -o yaourt -Sy"
