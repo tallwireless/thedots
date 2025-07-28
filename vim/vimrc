@@ -188,7 +188,6 @@ noremap <silent> <Leader>m :call SaveMake()<CR>
 
 
 nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
 nnoremap <F3> :set invlist list?<CR>
 
 """ Functions
