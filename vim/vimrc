@@ -43,6 +43,7 @@ if has('nvim')
   Plugin 'numirias/semshi'
   Plugin 'nvim-telescope/telescope.nvim'
   Plugin 'nvim-treesitter/nvim-treesitter'
+  Plugin 'tiyashbasu/refactor.nvim'
   Plugin 'cuducos/yaml.nvim'
 else
   Plugin 'roxma/vim-hug-neovim-rpc'
@@ -189,6 +190,7 @@ noremap <silent> <Leader>m :call SaveMake()<CR>
 
 nnoremap <F2> :set invpaste paste?<CR>
 nnoremap <F3> :set invlist list?<CR>
+nnoremap <F6> :refactor.lsp_rename_symbol()<CR>
 
 """ Functions
 function! ToggleSpell()
