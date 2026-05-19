@@ -55,7 +55,7 @@
      if: '[ `uname` = Linux ]'
      force: true
 
-   ~/.config/nvim/init.vim: nvim/nvimrc
+   ~/.config/nvim/: nvim
 
    ~/.gnupg/gpg.conf: gpg/gpg.conf
 

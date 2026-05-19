@@ -49,6 +49,7 @@ else
   Plugin 'roxma/vim-hug-neovim-rpc'
   Plugin 'sheerun/vim-polyglot'
 endif
+Plugin 'Yggdroot/indentLine'
 Plugin 'elzr/vim-json'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'chr4/nginx.vim'
@@ -311,3 +312,6 @@ set tabline=%!MyTabLine()
 "
 " Restore Y to copy a whole line
 nnoremap Y yg_
+
+
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
