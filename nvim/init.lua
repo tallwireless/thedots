@@ -66,3 +66,4 @@ set.foldlevelstart = 99       -- All folds open by default
 
 --- Import Per filetype overrides ----
 require("filetypes")
+
