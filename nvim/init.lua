@@ -20,7 +20,7 @@ vim.g.mapleader = ' ' -- Space as the leader key
 require("config.lazy")
 
 vim.cmd('colorscheme tokyonight')
-
+vim.lsp.enable('ruff')
 local set = vim.opt
 
 ------- SEARCH AND PATTERNS --------
@@ -66,4 +66,3 @@ set.foldlevelstart = 99       -- All folds open by default
 
 --- Import Per filetype overrides ----
 require("filetypes")
-

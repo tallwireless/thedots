@@ -5266,9 +5266,9 @@ Respond with one or more commands. Do not include any explanation or additional 
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PasteSpecialChunkDelay</key>
-	<real>0.01584892950094165</real>
+	<real>0.0063095735386013985</real>
 	<key>PasteSpecialChunkSize</key>
-	<integer>4</integer>
+	<integer>16</integer>
 	<key>PasteSpecialRegex</key>
 	<string></string>
 	<key>PasteSpecialSubstitution</key>
