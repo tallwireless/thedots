@@ -1,5 +1,9 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
-  build = ':TSUpdate'
+  build = ':TSUpdate',
+  highlight = {
+      enable = true,
+      disable = {'jinja'}
+    }
 }

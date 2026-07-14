@@ -1,3 +1,3 @@
 return {
- "you-n-g/jinja-engine.nvim"
+ "hiphish/jinja.vim"
 }
